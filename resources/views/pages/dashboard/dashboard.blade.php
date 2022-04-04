@@ -29,7 +29,7 @@
                             <div class="text-red px-2 font-40px font-weight-bold border border-danger">51 Ton</div>
                         </div>
                     </div>
-                    <p class="text-red text-card-top d-sm-inline-block">Jumlah stok otomatis akan berkurang setelah Anda selesai laporan jumlah Stuffing
+                    <p class="text-red text-card-top d-sm-inline-block" style="line-height: 150%">Jumlah stok otomatis akan berkurang setelah Anda selesai laporan jumlah Stuffing
                     </p>
                 </div>
             </div>
