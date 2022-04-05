@@ -23,7 +23,7 @@
 
             <div class="card card-home">
                 <div class="card-body shadow text-center" style="height: 150px">
-                    <h6>Total Stok Barang</h6>
+                    <h6>Total Stok Barang 1/2 Jadi</h6>
                     <div class="row justify-content-center mb-2">
                         <div class="col-auto">
                             <div class="text-red px-2 font-40px font-weight-bold border border-danger">51 Ton</div>
@@ -41,38 +41,39 @@
             <div class="w-76 h-114">
                 <div class="box-home rounded bg-green mb-1px">
                     <div class="card-body ">
-                        <img src="{{ asset('images/icon/diary.png') }}" width="30" height="30">
+                        <div class="font-weight-bold text-white">51</div>
+                        {{-- <img src="{{ asset('images/icon/diary.png') }}" width="30" height="30"> --}}
                     </div>
                 </div>
-                <p class="text-center font-xs lh-15">Stock Briket</p>
+                <p class="text-center font-xs lh-15">Inner Box</p>
             </div>
             <div class="w-76 h-114">
                 <div class="box-home rounded bg-blue mb-1px">
                     <div class="card-body ">
-                        <a href="{{ url('/stok') }}">
-                            <img src="{{ asset('images/icon/pemeriksaan.png') }}" width="30" height="30">
-                        </a>
+                        <div class="font-weight-bold text-white">51</div>
                     </div>
                 </div>
-                <p class="text-center font-xs lh-15">Stok Inner & Master Box</p>
+                <p class="text-center font-xs lh-15">Master Carton</p>
             </div>
             <div class="w-76 h-114">
                 <div class="box-home rounded bg-red mb-1px">
                     <div class="card-body ">
-                        <img src="{{ asset('images/icon/catatan.png') }}" width="30" height="30">
+                        <div class="font-weight-bold text-white">51</div>
+                        {{-- <img src="{{ asset('images/icon/catatan.png') }}" width="30" height="30"> --}}
                         {{-- <i class="fas fa-list-ul fa-2x text-white"></i>  --}}
                     </div>
                 </div>
-                <p class="text-center font-xs lh-15">Stuffing</p>
+                <p class="text-center font-xs lh-15">Barang Jadi</p>
             </div>
             <div class="w-76 h-114">
                 <div class="box-home rounded bg-yellow mb-1px">
                     <div class="card-body ">
-                        <img src="{{ asset('images/icon/catatan.png') }}" width="30" height="30">
+                        {{-- <img src="{{ asset('images/icon/catatan.png') }}" width="30" height="30"> --}}
+                        <div class="font-weight-bold text-white">51</div>
                         {{-- <i class="fas fa-user-md fa-2x text-white"></i>  --}}
                     </div>
                 </div>
-                <p class="text-center font-xs lh-15">Laporan</p>
+                <p class="text-center font-xs lh-15">Plastik</p>
             </div>
         </div>
 
