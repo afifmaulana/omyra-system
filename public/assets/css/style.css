@@ -187,7 +187,7 @@ input[type=text]{
 
 .form-omyra{
     height: 51px;
-    border: solid 1px #FFB4B4;
+    border: solid 1px #b4d5ff;
 }
 
 .text-header{
@@ -235,10 +235,10 @@ input[type=text]{
 
 .form-omyra{
     height: 51px;
-    border: solid 1px #FFB4B4 !important;
+    border: solid 1px #b4d5ff !important;
 }
 .form-omyra::placeholder{
-    color: #FFB4B4;
+    color: #b4d5ff;
 }
 
 .mr-15{
@@ -311,7 +311,7 @@ input[type=text]{
     margin-bottom: 29px;
 }
 .text-light-pink{
-    color: #D6D6D6;
+    color: #888888;
 }
 .text-light-pink.active{
     color: black;
@@ -436,15 +436,7 @@ input[type=text]{
 .text-pink{
     color: #FFB4B4;
 }
-.text-light-pink{
-    color: #D6D6D6;
-}
-.text-light-pink.active{
-    color: black;
-}
-.text-light-pink:active{
-    color: black;
-}
+
 .text-active-pink{
     color: #F25287;
 }

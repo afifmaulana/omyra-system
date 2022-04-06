@@ -14,8 +14,12 @@
     </div>
     <div class="bg-grey pt-23 mt-1" style="max-height: 86vh; overflow: auto">
         <div class="container-omyra ">
-
+            <div class="float-right">
+                <a href="{{ url('/stok/create') }}" class="btn btn-sm btn-primary"
+                    style="border-radius: 30px"> <i class="fa fa-plus"></i> Tambah</a>
+            </div>
             <h5 class="py-3">Laporan Keseluruhan</h5>
+
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
