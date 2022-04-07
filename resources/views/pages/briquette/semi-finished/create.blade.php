@@ -17,7 +17,7 @@
                 </a>
             </div>
             <div class="row justify-content-center">
-                <div class="text-header font-size-18 text-active-pink font-weight-500">Form input Inner Box</div>
+                <div class="text-header font-size-18 text-active-pink font-weight-500">Form Barang 1/2 Jadi</div>
             </div>
         </div>
     </div>
@@ -27,7 +27,11 @@
                 @csrf
                 <div class="form-group">
                     <label class="font-weight-500">Tanggal</label>
-                    <input type="text" name="" id="" class="datepicker form-control font-size-16 form-omyra" placeholder="Masukkan Tanggal Inner Datang">
+                    <input type="text" name="" id="" class="datepicker form-control font-size-16 form-omyra" placeholder="Masukkan Tanggal Bongkar Oven">
+                </div>
+                <div class="form-group">
+                    <label class="font-weight-500">Bongkar Oven</label>
+                    <input type="text" name="" id="" class="datepicker form-control font-size-16 form-omyra" placeholder="Masukkan Tanggal Borongan">
                 </div>
                 <div class="form-group">
                     <label class="font-weight-500">Brand</label>
@@ -66,10 +70,6 @@
                         <option value="AL">27x27x27</option>
                         <option value="WY">28x28x28</option>
                     </select>
-                </div>
-                <div class="form-group">
-                    <label class="font-weight-500">Jumlah Inner</label>
-                    <input type="text" name="" id="" class="form-control font-size-16 form-omyra" placeholder="12.000">
                 </div>
                 <button class="btn btn-omyra btn-block btn-pink text-white" type="submit">Simpan</button>
             </form>

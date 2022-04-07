@@ -38,7 +38,7 @@
 
     <div class="container-omyra pb-5 mb-5" style="max-height: 86vh; overflow: auto">
         <div class="d-flex justify-content-between mb-2">
-            <div class="w-76 h-114">
+            <div class="w-94 h-251">
                 <div class="box-home rounded bg-green mb-1px">
                     <div class="card-body ">
                         <div class="font-weight-bold text-white">711.000</div>
@@ -47,7 +47,7 @@
                 </div>
                 <p class="text-center font-xs lh-15">Inner Box</p>
             </div>
-            <div class="w-76 h-114">
+            <div class="w-94 h-251">
                 <div class="box-home rounded bg-blue mb-1px">
                     <div class="card-body ">
                         <div class="font-weight-bold text-white" style="font-size: 12px">511.000</div>
@@ -55,7 +55,7 @@
                 </div>
                 <p class="text-center font-xs lh-15">Master Carton</p>
             </div>
-            <div class="w-76 h-114">
+            <div class="w-94 h-251">
                 <div class="box-home rounded bg-red mb-1px">
                     <div class="card-body ">
                         <div class="font-weight-bold text-white">51 Ton</div>
@@ -65,7 +65,7 @@
                 </div>
                 <p class="text-center font-xs lh-15">Barang Jadi</p>
             </div>
-            <div class="w-76 h-114">
+            <div class="w-94 h-251">
                 <div class="box-home rounded bg-yellow mb-1px">
                     <div class="card-body">
                         {{-- <img src="{{ asset('images/icon/catatan.png') }}" width="30" height="30"> --}}

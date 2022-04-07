@@ -22,6 +22,21 @@ Route::get('/stok', function () {
 Route::get('/stok/create', function () {
     return view('pages.stock.inner.create');
 });
+Route::get('/stok/master', function () {
+    return view('pages.stock.master.index');
+});
+Route::get('/stok/master/create', function () {
+    return view('pages.stock.master.create');
+});
+Route::get('/briquette/semi-finished', function () {
+    return view('pages.briquette.semi-finished.index');
+});
+Route::get('/briquette/semi-finished/create', function () {
+    return view('pages.briquette.semi-finished.create');
+});
+Route::get('/profile', function () {
+    return view('pages.profile.profile');
+});
 
 
 Auth::routes();

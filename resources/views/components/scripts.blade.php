@@ -12,6 +12,7 @@
 <script>
     $(document).ready(function() {
         $('#example').DataTable();
+        $('.select2').select2();
     } );
     // let options = {
     //       series: [{

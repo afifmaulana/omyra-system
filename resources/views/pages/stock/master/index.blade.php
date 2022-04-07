@@ -8,7 +8,7 @@
                 </a>
             </div>
             <div class="row justify-content-center">
-                <div class="text-header font-size-18 text-active-pink font-weight-500">Data Stok Inner Box</div>
+                <div class="text-header font-size-18 text-active-pink font-weight-500">Data Stok Master Box</div>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
                 <thead>
                     <tr>
                         <th>Tanggal</th>
-                        <th>Merk Inner</th>
+                        <th>Merk Master</th>
                         <th>Jumlah</th>
                         <th>Action</th>
                     </tr>

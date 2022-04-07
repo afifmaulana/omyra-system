@@ -8,14 +8,14 @@
                 </a>
             </div>
             <div class="row justify-content-center">
-                <div class="text-header font-size-18 text-active-pink font-weight-500">Data Stok Inner Box</div>
+                <div class="text-header font-size-18 text-active-pink font-weight-500">Data Barang 1/2 Jadi</div>
             </div>
         </div>
     </div>
     <div class="bg-grey pt-23 mt-1" style="max-height: 86vh; overflow: auto">
         <div class="container-omyra ">
             <div class="float-right">
-                <a href="{{ url('/stok/create') }}" class="btn btn-sm btn-primary"
+                <a href="{{ url('/briquette/semi-finished/create') }}" class="btn btn-sm btn-primary"
                     style="border-radius: 30px"> <i class="fa fa-plus"></i> Tambah</a>
             </div>
             <h5 class="py-3">Laporan Keseluruhan</h5>
