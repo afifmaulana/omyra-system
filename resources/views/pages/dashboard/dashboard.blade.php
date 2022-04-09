@@ -11,7 +11,9 @@
                     </div>
                 </div>
                 <div class="mr-15">
-                    <img src="{{ asset('images/icon/notification.png') }}" width="25" height="25">
+                    <a href="{{ url('/notification') }}">
+                        <img src="{{ asset('images/icon/notification.png') }}" width="25" height="25">
+                    </a>
                     {{-- <i class="fas fa-bell fa-lg text-white"></i> --}}
                 </div>
             </div>
@@ -26,7 +28,7 @@
                     <h6>Total Stok Barang 1/2 Jadi</h6>
                     <div class="row justify-content-center mb-2">
                         <div class="col-auto">
-                            <div class="text-red px-2 font-40px font-weight-bold border border-danger">51 Ton</div>
+                            <div class="text-red px-2 font-40px font-weight-bold border border-danger">51.000 Kg</div>
                         </div>
                     </div>
                     <p class="text-red text-card-top d-sm-inline-block" style="line-height: 150%">Jumlah stok otomatis akan berkurang setelah selesai laporan jumlah Stuffing
@@ -36,40 +38,50 @@
         </div>
     </div>
 
-    <div class="container-omyra pb-5 mb-5" style="max-height: 86vh; overflow: auto">
-        <div class="d-flex justify-content-between mb-2">
-            <div class="w-94 h-251">
-                <div class="box-home rounded bg-green mb-1px">
-                    <div class="card-body ">
-                        <div class="font-weight-bold text-white">711.000</div>
-                        {{-- <img src="{{ asset('images/icon/diary.png') }}" width="30" height="30"> --}}
+    <div class="container-omyra pb-5 mb-5">
+        <div class="row mb-2 px-2">
+            <div class="col-6">
+                <div class="rounded bg-green mb-1px">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-center">
+                            <i class="fas fa-archive fa-2x text-white"></i>
+                        </div>
+                        <div class="font-weight-bold text-white text-center">711.000</div>
                     </div>
                 </div>
                 <p class="text-center font-xs lh-15">Inner Box</p>
             </div>
-            <div class="w-94 h-251">
-                <div class="box-home rounded bg-blue mb-1px">
+            <div class="col-6">
+                <div class="rounded bg-blue mb-1px">
                     <div class="card-body ">
-                        <div class="font-weight-bold text-white" style="font-size: 12px">511.000</div>
+                        <div class="d-flex justify-content-center">
+                            <i class="fas fa-cube fa-2x text-white"></i>
+                        </div>
+                        <div class="font-weight-bold text-white text-center">511.000</div>
                     </div>
                 </div>
                 <p class="text-center font-xs lh-15">Master Carton</p>
             </div>
-            <div class="w-94 h-251">
-                <div class="box-home rounded bg-red mb-1px">
+            <div class="col-6">
+                <div class="rounded bg-red mb-1px">
                     <div class="card-body ">
-                        <div class="font-weight-bold text-white">51 Ton</div>
+                        <div class="d-flex justify-content-center">
+                            <i class="fas fa-cubes fa-2x text-white"></i>
+                        </div>
+                        <div class="font-weight-bold text-white text-center">51.000 Kg</div>
                         {{-- <img src="{{ asset('images/icon/catatan.png') }}" width="30" height="30"> --}}
                         {{-- <i class="fas fa-list-ul fa-2x text-white"></i>  --}}
                     </div>
                 </div>
                 <p class="text-center font-xs lh-15">Barang Jadi</p>
             </div>
-            <div class="w-94 h-251">
-                <div class="box-home rounded bg-yellow mb-1px">
+            <div class="col-6">
+                <div class="rounded bg-yellow mb-1px">
                     <div class="card-body">
-                        {{-- <img src="{{ asset('images/icon/catatan.png') }}" width="30" height="30"> --}}
-                        <div class="font-weight-bold text-white">951.000</div>
+                        <div class="d-flex justify-content-center">
+                            <i class="fas fa-archive fa-2x text-white"></i>
+                        </div>
+                        <div class="font-weight-bold text-white text-center">951.000</div>
                         {{-- <i class="fas fa-user-md fa-2x text-white"></i>  --}}
                     </div>
                 </div>
@@ -77,7 +89,7 @@
             </div>
         </div>
 
-        <h4 class="font-weight-bold font-20 mt-4">Aktivitas</h4>
+        <h4 class="font-weight-bold font-20 mt-4">Aktivitas Terbaru</h4>
 
         <hr>
         <div class="d-flex">

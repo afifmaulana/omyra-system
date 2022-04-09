@@ -25,8 +25,8 @@
                     <input type="text" name="" id="" class="form-control font-size-16 form-omyra" placeholder="08123456789">
                 </div>
                 <div class="form-group">
-                    <label for="">Pekerjaan</label>
-                    <input type="text" name="" id="" class="form-control font-size-16 form-omyra" placeholder="">
+                    <label for="">Jabatan</label>
+                    <input type="text" name="" id="" class="form-control font-size-16 form-omyra" placeholder="Mandor Borongan">
                 </div>
                 <button class="btn btn-block btn-omyra btn-pink text-white mt-3" type="submit">Simpan Perubahan</button>
             </form>

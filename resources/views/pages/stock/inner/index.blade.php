@@ -3,7 +3,7 @@
     <div class="box-shadow">
         <div class="col-12 shadow shadow-lg">
             <div class="py-3">
-                <a href="{{ url('/') }}">
+                <a href="{{ url('/stok') }}">
                     <img src="{{ asset('images/icon/back.png') }}" width="18" height="18">
                 </a>
             </div>
@@ -13,12 +13,12 @@
         </div>
     </div>
     <div class="bg-grey pt-23 mt-1" style="max-height: 86vh; overflow: auto">
-        <div class="container-omyra ">
+        <div class="container-omyra" style="margin-bottom: 90px;">
             <div class="float-right">
-                <a href="{{ url('/stok/create') }}" class="btn btn-sm btn-primary"
+                <a href="{{ url('/stok/inner/create') }}" class="btn btn-sm btn-primary"
                     style="border-radius: 30px"> <i class="fa fa-plus"></i> Tambah</a>
             </div>
-            <h5 class="py-3">Laporan Keseluruhan</h5>
+            <h5 class="py-3"></h5>
 
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>

@@ -34,14 +34,14 @@
         <a class="text-center py-2 m-0" href="{{ url('/stok') }}">
             {{-- <img src="{{ asset('images/icon/forme.png') }}" alt=""> --}}
             <i class="fa fa-archive h-40 p-0 m-0"></i>
-            <p class="font-xs text-light-pink p-0 m-0 text-center">Inner <br>Master</p>
+            <p class="font-xs text-light-pink p-0 m-0 text-center">Stok <br>Box</p>
         </a>
         <a class="text-center py-2 m-0" href="{{ url('/briquette/semi-finished') }}">
             {{-- <img src="{{ asset('images/icon/forme.png') }}" alt=""> --}}
             <i class="fa fa-cube h-40 p-0 m-0"></i>
             <p class="font-xs text-light-pink p-0 m-0 text-center">Barang <br>1/2 Jadi</p>
         </a>
-        <a class="text-center py-2 m-0" href="#">
+        <a class="text-center py-2 m-0" href="{{ url('/briquette/finished') }}">
             {{-- <img src="{{ asset('images/icon/forme.png') }}" alt=""> --}}
             <i class="fa fa-cubes h-40 p-0 m-0"></i>
             <p class="font-xs text-light-pink p-0 m-0">Barang<br> Jadi</p>

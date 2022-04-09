@@ -21,8 +21,8 @@
             </div>
         </div>
     </div>
-    <div class="bg-grey pt-23 mt-1" style="max-height: 86vh; overflow: hidden; margin-bottom: 30px">
-        <div class="container-omyra">
+    <div class="bg-grey pt-23 mt-1" style="max-height: 86vh; overflow: hidden">
+        <div class="container-omyra" style="margin-bottom: 90px;">
             <form action="">
                 @csrf
                 <div class="form-group">

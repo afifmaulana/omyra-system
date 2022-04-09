@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="bg-grey pt-23 mt-1" style="max-height: 86vh; overflow: auto">
-        <div class="container-omyra ">
+        <div class="container-omyra" style="margin-bottom: 90px;">
             <div class="float-right">
                 <a href="{{ url('/briquette/semi-finished/create') }}" class="btn btn-sm btn-primary"
                     style="border-radius: 30px"> <i class="fa fa-plus"></i> Tambah</a>
