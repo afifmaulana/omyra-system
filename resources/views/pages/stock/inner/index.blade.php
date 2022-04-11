@@ -24,7 +24,8 @@
                 <thead>
                     <tr>
                         <th>Tanggal</th>
-                        <th>Merk Inner</th>
+                        <th>Brand</th>
+                        <th>Jenis</th>
                         <th>Jumlah</th>
                         <th>Action</th>
                     </tr>
@@ -32,6 +33,7 @@
                 <tbody>
                     <tr>
                         <td>Tiger Nixon</td>
+                        <td>System Architect</td>
                         <td>System Architect</td>
                         <td>Edinburgh</td>
                         <td>
@@ -43,6 +45,7 @@
                     <tr>
                         <td>Garrett Winters</td>
                         <td>Accountant</td>
+                        <td>Accountant</td>
                         <td>Tokyo</td>
                         <td>
                             <a href="">
@@ -52,6 +55,7 @@
                     </tr>
                     <tr>
                         <td>Ashton Cox</td>
+                        <td>Junior Technical Author</td>
                         <td>Junior Technical Author</td>
                         <td>San Francisco</td>
                         <td>
@@ -63,6 +67,7 @@
                     <tr>
                         <td>Cedric Kelly</td>
                         <td>Senior Javascript Developer</td>
+                        <td>Senior Javascript Developer</td>
                         <td>Edinburgh</td>
                         <td>
                             <a href="">
@@ -73,6 +78,7 @@
                     <tr>
                         <td>Airi Satou</td>
                         <td>Accountant</td>
+                        <td>Accountant</td>
                         <td>Tokyo</td>
                         <td>
                             <a href="">
@@ -82,6 +88,7 @@
                     </tr>
                     <tr>
                         <td>Brielle Williamson</td>
+                        <td>Integration Specialist</td>
                         <td>Integration Specialist</td>
                         <td>New York</td>
                         <td>
@@ -94,6 +101,7 @@
                 <tfoot>
                     <tr>
                         <th>Name</th>
+                        <th>Position</th>
                         <th>Position</th>
                         <th>Office</th>
                         <th>Action</th>

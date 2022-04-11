@@ -18,7 +18,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Password</label>
-                    <textarea type="password" name="" id="" class="form-control font-size-16 form-omyra" placeholder="*******"></textarea>
+                    <input type="password" name="" id="" class="form-control font-size-16 form-omyra" placeholder="*******">
                 </div>
                 <div class="form-group">
                     <label for="">No HP</label>
