@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\Brand\BrandController;
+use App\Http\Controllers\Admin\BrandType\BrandTypeController;
+use App\Http\Controllers\Admin\Dashboard\DashboardController;
+use App\Http\Controllers\Admin\Profile\ProfileController;
+use App\Http\Controllers\Admin\Size\SizeController;
 use App\Http\Controllers\Admin\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,12 +19,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::prefix('admin')->group(function () {
-    Route::get('dashboard', function () {
-        return view('pages.admin.dashboard.dashboard');
-    });
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard.index');
     Route::prefix('users')->group(function () {
         Route::get('index', [UserController::class, 'index'])->name('admin.user.index');
         Route::get('create', [UserController::class, 'create'])->name('admin.user.create');
+    });
+
+    Route::prefix('brand')->group(function (){
+        Route::get('index', [BrandController::class, 'index'])->name('admin.brand.index');
+        Route::get('create', [BrandController::class, 'create'])->name('admin.brand.create');
+    });
+
+    Route::prefix('brand-type')->group(function (){
+        Route::get('index', [BrandTypeController::class, 'index'])->name('admin.brand-type.index');
+        Route::get('create', [BrandTypeController::class, 'create'])->name('admin.brand-type.create');
+    });
+
+    Route::prefix('size')->group(function (){
+        Route::get('index', [SizeController::class, 'index'])->name('admin.size.index');
+        Route::get('create', [SizeController::class, 'create'])->name('admin.size.create');
+    });
+
+    Route::prefix('profile')->group(function (){
+        Route::get('edit', [ProfileController::class, 'edit'])->name('admin.profile.edit');
     });
 });
 

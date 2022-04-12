@@ -28,15 +28,15 @@
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <input id="title" class="form-control col-md-7 col-xs-12"
                                                 name="title"
-                                                placeholder="Masukkan Nama" required="required" type="text">
+                                                placeholder="Masukkan Ukuran" required="required" type="text">
                                         </div>
                                     </div>
 
                                     <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <div class="col-md-12">
-                                            <a href="#" class="btn btn-sm btn-primary">Cancel</a>
-                                            <button id="send" type="submit" class="btn btn-sm btn-success">Submit</button>
+                                            <a href="{{ route('admin.size.index') }}" class="btn btn-sm btn-primary">Kembali</a>
+                                            <button id="send" type="submit" class="btn btn-sm btn-success">Simpan</button>
                                         </div>
                                     </div>
                                 </form>

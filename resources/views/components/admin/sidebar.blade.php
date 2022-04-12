@@ -29,20 +29,19 @@
 
                 <ul class="nav side-menu">
                     <h3 class="mb-3" style="color: #adadad">Dashboard</h3>
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard </span></a>
-                    </li>
+                    <li><a href="{{ route('admin.dashboard.index') }}"><i class="fa fa-dashboard"></i> Dashboard </span></a></li>
 
                     <h3 class="mb-3" style="color: #adadad; padding-top: 10px;">Users</h3>
                     <li><a href="{{ route('admin.user.index') }}"><i class="fa fa-list"></i> Users </span></a></li>
 
                     <h3 class="mb-3" style="color: #adadad; padding-top: 10px;">Brand</h3>
-                    <li><a href="#"><i class="fa fa-list"></i> Brand </span></a></li>
+                    <li><a href="{{ route('admin.brand.index') }}"><i class="fa fa-list"></i> Brand </span></a></li>
 
                     <h3 class="mb-3" style="color: #adadad; padding-top: 10px;">Jenis</h3>
-                    <li><a href="#"><i class="fa fa-list"></i> Jenis </span></a></li>
+                    <li><a href="{{ route('admin.brand-type.index') }}"><i class="fa fa-list"></i> Jenis </span></a></li>
 
                     <h3 class="mb-3" style="color: #adadad; padding-top: 10px;">Ukuran</h3>
-                    <li><a href="#"><i class="fa fa-list"></i> Ukuran </span></a></li>
+                    <li><a href="{{ route('admin.size.index') }}"><i class="fa fa-list"></i> Ukuran </span></a></li>
                 </ul>
             </div>
 
@@ -52,14 +51,14 @@
 
         <!-- /menu footer buttons -->
         <div class="sidebar-footer hidden-small">
-            <a href="#" data-toggle="tooltip" data-placement="top" title="Dashboard">
+            <a href="{{ route('admin.dashboard.index') }}" data-toggle="tooltip" data-placement="top" title="Dashboard">
                 <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
             </a>
             <a data-toggle="tooltip" data-placement="top" title="FullScreen" onclick="toggleFullScreen()">
                 <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
             </a>
 
-            <a href="#" data-toggle="tooltip" data-placement="top"
+            <a href="{{ route('admin.profile.edit') }}" data-toggle="tooltip" data-placement="top"
                 title="Update Profile">
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
             </a>

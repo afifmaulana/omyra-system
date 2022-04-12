@@ -15,7 +15,7 @@
                                 <h2>Data Jenis Brand</h2>
                                 <div class="nav navbar-right panel_toolbox">
                                     <div class="d-flex float-end">
-                                        <a href="#" class="btn btn-sm btn-primary"
+                                        <a href="{{ route('admin.brand-type.create') }}" class="btn btn-sm btn-primary"
                                             style="border-radius: 30px"> <i class="fa fa-plus"></i> Tambah Baru</a>
                                     </div>
                                 </div>
