@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.frontend.app')
 @push('styles')
     <style>
         .select2-container .select2-selection--single {

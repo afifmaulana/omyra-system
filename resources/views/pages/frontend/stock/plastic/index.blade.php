@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.frontend.app')
 @section('content')
     <div class="box-shadow">
         <div class="col-12 shadow shadow-lg">

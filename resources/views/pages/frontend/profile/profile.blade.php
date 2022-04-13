@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.frontend.app')
 @section('content')
     <div class="container box-shadow">
         <div class="py-3">

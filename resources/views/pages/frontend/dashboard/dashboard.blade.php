@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.frontend.app')
 @section('content')
     <div class="home-card mb-37">
         <div class="buble buble1"></div>
