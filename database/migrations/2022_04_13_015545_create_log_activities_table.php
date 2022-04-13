@@ -21,6 +21,9 @@ class CreateLogActivitiesTable extends Migration
             $table->foreignId('stock_id')->unsigned();
             $table->foreignId('semi_finished_size_id')->unsigned();
             $table->foreignId('finished_id')->unsigned();
+            $table->string('source_type')->nullable();
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

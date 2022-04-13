@@ -45,7 +45,6 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-
 Route::get('/', function () {
     return view('pages.frontend.dashboard.dashboard');
 });
