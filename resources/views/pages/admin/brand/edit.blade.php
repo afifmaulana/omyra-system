@@ -18,16 +18,16 @@
                             </div>
                             <div class="x_content">
 
-                                <form action="{{ route('admin.brand.store') }}" method="POST" class="form-horizontal form-label-left" novalidate>
+                                <form action="{{ route('admin.brand.update',$brand->id) }}" method="POST" class="form-horizontal form-label-left" novalidate>
                                     @csrf
-
+                                    @method('put')
                                     <div class="item form-group">
                                         <label class="col-md-12 col-sm-12 col-xs-12" for="BrandName">Nama Brand<span
                                                 class="required">*</span>
                                         </label>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <input id="brand_name" class="form-control col-md-7 col-xs-12 @error('brand_name') is-invalid @enderror"
-                                                name="brand_name" value="{{ old('brand_name') }}"
+                                                name="brand_name" value="{{ $brand->brand_name ?? old('brand_name') }}"
                                                 placeholder="Masukkan Nama Brand" required="required" type="text">
                                                 @error('brand_name')
                                                     <div class="invalid-feedback">{{ $message }}</div>

@@ -18,18 +18,18 @@
                             </div>
                             <div class="x_content">
 
-                                <form action="{{ route('admin.brand.store') }}" method="POST" class="form-horizontal form-label-left" novalidate>
+                                <form action="{{ route('admin.brand-type.update',$brandType->id) }}" method="POST" class="form-horizontal form-label-left" novalidate>
                                     @csrf
-
+                                    @method('put')
                                     <div class="item form-group">
-                                        <label class="col-md-12 col-sm-12 col-xs-12" for="BrandName">Nama Brand<span
+                                        <label class="col-md-12 col-sm-12 col-xs-12" for="BrandType">Jenis Brand<span
                                                 class="required">*</span>
                                         </label>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input id="brand_name" class="form-control col-md-7 col-xs-12 @error('brand_name') is-invalid @enderror"
-                                                name="brand_name" value="{{ old('brand_name') }}"
-                                                placeholder="Masukkan Nama Brand" required="required" type="text">
-                                                @error('brand_name')
+                                            <input id="brand_type" class="form-control col-md-7 col-xs-12 @error('brand_type') is-invalid @enderror"
+                                                name="brand_type" value="{{ $brandType->brand_type ?? old('brand_type') }}"
+                                                placeholder="Masukkan Jenis Brand" required="required" type="text">
+                                                @error('brand_type')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                         </div>
@@ -38,7 +38,7 @@
                                     <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <div class="col-md-12">
-                                            <a href="{{ route('admin.brand.index') }}" class="btn btn-sm btn-primary">Kembali</a>
+                                            <a href="{{ route('admin.brand-type.index') }}" class="btn btn-sm btn-primary">Kembali</a>
                                             <button id="send" type="submit" class="btn btn-sm btn-success">Simpan</button>
                                         </div>
                                     </div>

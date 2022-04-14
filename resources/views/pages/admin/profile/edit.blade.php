@@ -52,26 +52,6 @@
                                     </div>
                                 </div>
                                 <div class="item form-group">
-                                    <label class="col-md-12 col-sm-12 col-xs-12" for="">Image</label>
-                                    <div class="text-warning text-sm col-md-12 col-sm-12 col-xs-12">
-                                        *Note: Image requirement 100 x 100
-                                    </div>
-                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                        <input type="file"
-                                            class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}"
-                                            name="image" id="input-image">
-                                        @if ($errors->has('image'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <p><b>{{ $errors->first('image') }}</b></p>
-                                            </span>
-                                        @endif
-                                        <img src="{{ asset('assets-admin/build/images/back_disabled.png') }}"
-                                            class="img-thumbnail mb-2" height="100" width="250">
-                                    </div>
-
-                                </div>
-
-                                <div class="item form-group">
                                     <label class="col-md-12 col-sm-12 col-xs-12" for="name"> Password <span
                                             class="required">*</span>
                                     </label>

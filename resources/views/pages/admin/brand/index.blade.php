@@ -85,7 +85,7 @@
             // Jquery Datatable
             // let jquery_datatable = $("#datatable").DataTable()
             if ($('#dataTable').length) {
-                let url = "{{ route('admin.user.datatables') }}";
+                let url = "{{ route('admin.brand.datatables') }}";
                 let rowData = [{
                         data: 'id',
                         name: 'id'
@@ -146,7 +146,7 @@
                         });
                         $.ajax({
                             type: 'delete',
-                            url: "{{ route('admin.user.delete', '') }}" + "/" + id,
+                            url: "{{ route('admin.brand.delete', '') }}" + "/" + id,
                             data: {
                                 "_token": "{{ csrf_token() }}"
                             },

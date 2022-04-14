@@ -18,17 +18,20 @@
                             </div>
                             <div class="x_content">
 
-                                <form action="#" method="POST" class="form-horizontal form-label-left" novalidate>
+                                <form action="{{ route('admin.size.store') }}" method="POST" class="form-horizontal form-label-left" novalidate>
                                     @csrf
 
                                     <div class="item form-group">
-                                        <label class="col-md-12 col-sm-12 col-xs-12" for="title">Ukuran<span
+                                        <label class="col-md-12 col-sm-12 col-xs-12" for="BrandSize">Ukuran Brand<span
                                                 class="required">*</span>
                                         </label>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input id="title" class="form-control col-md-7 col-xs-12"
-                                                name="title"
-                                                placeholder="Masukkan Ukuran" required="required" type="text">
+                                            <input id="brand_size" class="form-control col-md-7 col-xs-12 @error('brand_size') is-invalid @enderror"
+                                                name="brand_size" value="{{ old('brand_size') }}"
+                                                placeholder="Masukkan Ukuran Brand" required="required" type="text">
+                                                @error('brand_size')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                         </div>
                                     </div>
 

@@ -32,17 +32,32 @@ Route::prefix('admin')->group(function () {
 
     Route::prefix('brand')->group(function (){
         Route::get('index', [BrandController::class, 'index'])->name('admin.brand.index');
+        Route::post('index', [BrandController::class, 'datatables'])->name('admin.brand.datatables');
         Route::get('create', [BrandController::class, 'create'])->name('admin.brand.create');
+        Route::post('create', [BrandController::class, 'store'])->name('admin.brand.store');
+        Route::get('{id}', [BrandController::class, 'edit'])->name('admin.brand.edit');
+        Route::put('{id}', [BrandController::class, 'update'])->name('admin.brand.update');
+        Route::delete('{id}', [BrandController::class, 'destroy'])->name('admin.brand.delete');
     });
 
     Route::prefix('brand-type')->group(function (){
         Route::get('index', [BrandTypeController::class, 'index'])->name('admin.brand-type.index');
+        Route::post('index', [BrandTypeController::class, 'datatables'])->name('admin.brand-type.datatables');
         Route::get('create', [BrandTypeController::class, 'create'])->name('admin.brand-type.create');
+        Route::post('create', [BrandTypeController::class, 'store'])->name('admin.brand-type.store');
+        Route::get('{id}', [BrandTypeController::class, 'edit'])->name('admin.brand-type.edit');
+        Route::put('{id}', [BrandTypeController::class, 'update'])->name('admin.brand-type.update');
+        Route::delete('{id}', [BrandTypeController::class, 'destroy'])->name('admin.brand-type.delete');
     });
 
     Route::prefix('size')->group(function (){
         Route::get('index', [SizeController::class, 'index'])->name('admin.size.index');
+        Route::post('index', [SizeController::class, 'datatables'])->name('admin.size.datatables');
         Route::get('create', [SizeController::class, 'create'])->name('admin.size.create');
+        Route::post('create', [SizeController::class, 'store'])->name('admin.size.store');
+        Route::get('{id}', [SizeController::class, 'edit'])->name('admin.size.edit');
+        Route::put('{id}', [SizeController::class, 'update'])->name('admin.size.update');
+        Route::delete('{id}', [SizeController::class, 'destroy'])->name('admin.size.delete');
     });
 
     Route::prefix('profile')->group(function (){

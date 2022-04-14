@@ -12,23 +12,26 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Tambah Jenis Baru<small>Anda dapat manambahkan Jenis baru di sini</small></h2>
+                                <h2>Tambah Brand Baru<small>Anda dapat manambahkan Brand baru di sini</small></h2>
 
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
 
-                                <form action="#" method="POST" class="form-horizontal form-label-left" novalidate>
+                                <form action="{{ route('admin.brand-type.store') }}" method="POST" class="form-horizontal form-label-left" novalidate>
                                     @csrf
 
                                     <div class="item form-group">
-                                        <label class="col-md-12 col-sm-12 col-xs-12" for="title">Jenis<span
+                                        <label class="col-md-12 col-sm-12 col-xs-12" for="BrandName">Jenis Brand<span
                                                 class="required">*</span>
                                         </label>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input id="title" class="form-control col-md-7 col-xs-12"
-                                                name="title"
-                                                placeholder="Masukkan Jenis" required="required" type="text">
+                                            <input id="brand_type" class="form-control col-md-7 col-xs-12 @error('brand_type') is-invalid @enderror"
+                                                name="brand_type" value="{{ old('brand_type') }}"
+                                                placeholder="Masukkan Jenis Brand" required="required" type="text">
+                                                @error('brand_type')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                         </div>
                                     </div>
 
@@ -48,3 +51,4 @@
         </div>
     <!-- /page content -->
 @endsection
+4
