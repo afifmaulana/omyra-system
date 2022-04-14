@@ -21,16 +21,16 @@
                             </div>
                             <div class="x_content">
 
-                                <form action="{{ route('admin.user.store') }}" method="POST" class="form-horizontal form-label-left" novalidate>
+                                <form action="{{ route('admin.user.update', $user->id) }}" method="POST" class="form-horizontal form-label-left" novalidate>
                                     @csrf
-
+                                    @method('put')
                                     <div class="item form-group">
                                         <label class="col-md-12 col-sm-12 col-xs-12" for="title">Nama <span
                                                 class="required">*</span>
                                         </label>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <input id="title" class="form-control col-md-7 col-xs-12  @error('name') is-invalid @enderror"
-                                                name="name" value="{{ old('name') }}"
+                                                name="name" value="{{ $user->name ?? old('name') }}"
                                                 placeholder="Masukkan Nama" required="required" type="text">
                                                 @error('name')
                                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -43,7 +43,7 @@
                                         </label>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <input id="email" class="form-control col-md-7 col-xs-12 @error('email') is-invalid @enderror"
-                                                name="email" value="{{ old('email') }}"
+                                                name="email" value="{{ $user->email ?? old('email') }}"
                                                 placeholder="Masukkan Email" required="required" type="text">
                                                 @error('email')
                                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -58,9 +58,9 @@
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <select id="heard" class="form-control @error('role') is-invalid @enderror" name="role" required="required">
                                                 <option value="" selected disabled>---- Pilih Jabatan ----</option>
-                                                <option value="0">Admin</option>
-                                                <option value="1">Mandor</option>
-                                                <option value="2">Staff Gudang</option>
+                                                <option value="0" {{ $user->role == '0' ? 'selected' : '' }}>Admin</option>
+                                                <option value="1" {{ $user->role == '1' ? 'selected' : '' }}>Mandor</option>
+                                                <option value="2" {{ $user->role == '2' ? 'selected' : '' }}>Staff Gudang</option>
                                             </select>
                                             @error('role')
                                                 <div class="invalid-feedback">{{ $message }}</div>

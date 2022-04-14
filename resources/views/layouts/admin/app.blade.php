@@ -10,7 +10,7 @@
         @include('components.admin.sidebar')
 
         @include('components.admin.navbar')
-
+        
         @yield('content')
 
         @include('components.admin.footer')

@@ -22,7 +22,12 @@ Route::prefix('admin')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard.index');
     Route::prefix('users')->group(function () {
         Route::get('index', [UserController::class, 'index'])->name('admin.user.index');
+        Route::post('index', [UserController::class, 'datatables'])->name('admin.user.datatables');
         Route::get('create', [UserController::class, 'create'])->name('admin.user.create');
+        Route::post('create', [UserController::class, 'store'])->name('admin.user.store');
+        Route::get('{id}', [UserController::class, 'edit'])->name('admin.user.edit');
+        Route::put('{id}', [UserController::class, 'update'])->name('admin.user.update');
+        Route::delete('{id}', [UserController::class, 'destroy'])->name('admin.user.delete');
     });
 
     Route::prefix('brand')->group(function (){
