@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\Profile\ProfileController;
 use App\Http\Controllers\Admin\Size\SizeController;
 use App\Http\Controllers\Admin\User\UserController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+    Route::get('/login-admin', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login-submit', [LoginController::class, 'login'])->name('login.submit');
+    Route::get('/login-admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
+
 Route::prefix('admin')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard.index');
     Route::prefix('users')->group(function () {
