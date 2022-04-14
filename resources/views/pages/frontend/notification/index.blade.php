@@ -3,7 +3,7 @@
     <div class="box-shadow">
         <div class="col-12 shadow shadow-lg">
             <div class="py-3">
-                <a href="{{ url('/') }}">
+                <a href="{{ route('frontend.dashboard.index') }}">
                     <img src="{{ asset('images/icon/back.png') }}" width="18" height="18">
                 </a>
             </div>

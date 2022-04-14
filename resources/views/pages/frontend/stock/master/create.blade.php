@@ -12,7 +12,7 @@
     <div class="box-shadow">
         <div class="col-12 shadow shadow-lg">
             <div class="py-3">
-                <a href="{{ url('/stok') }}">
+                <a href="{{ route('frontend.master.index') }}">
                     <img src="{{ asset('images/icon/back.png') }}" width="18" height="18">
                 </a>
             </div>
@@ -21,7 +21,7 @@
             </div>
         </div>
     </div>
-    <div class="bg-grey pt-23 mt-1" style="max-height: 86vh; overflow: hidden; margin-bottom: 30px">
+    <div class="bg-grey pt-23 mt-1" style="max-height: 86vh; overflow: hidden;">
         <div class="container-omyra">
             <form action="">
                 @csrf

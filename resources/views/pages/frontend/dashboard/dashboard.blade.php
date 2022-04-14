@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <div class="mr-15">
-                    <a href="{{ url('/notification') }}">
+                    <a href="{{ route('frontend.notification.index') }}">
                         <img src="{{ asset('images/icon/notification.png') }}" width="25" height="25">
                     </a>
                     {{-- <i class="fas fa-bell fa-lg text-white"></i> --}}

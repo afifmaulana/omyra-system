@@ -3,7 +3,7 @@
     <div class="box-shadow">
         <div class="col-12 shadow shadow-lg">
             <div class="py-3">
-                <a href="{{ url('/') }}">
+                <a href="{{ route('frontend.dashboard.index') }}">
                     <img src="{{ asset('images/icon/back.png') }}" width="18" height="18">
                 </a>
             </div>
@@ -19,7 +19,7 @@
                     <div class="rounded bg-green mb-1px">
                         <div class="card-body">
                             <div class="d-flex justify-content-center">
-                                <a href="{{ url('/stok/inner') }}">
+                                <a href="{{ route('frontend.inner.index') }}">
                                     <i class="fas fa-archive fa-2x text-white"></i>
                                 </a>
                             </div>
@@ -32,7 +32,7 @@
                     <div class="rounded bg-blue mb-1px">
                         <div class="card-body ">
                             <div class="d-flex justify-content-center">
-                                <a href="{{ url('/stok/master') }}">
+                                <a href="{{ route('frontend.master.index') }}">
                                     <i class="fas fa-cube fa-2x text-white"></i>
                                 </a>
                             </div>
@@ -45,7 +45,7 @@
                     <div class="rounded bg-red mb-1px">
                         <div class="card-body">
                             <div class="d-flex justify-content-center">
-                                <a href="{{ url('/stok/plastic') }}">
+                                <a href="{{ route('frontend.plastic.index') }}">
                                     <i class="fas fa-cubes fa-2x text-white"></i>
                                 </a>
                             </div>

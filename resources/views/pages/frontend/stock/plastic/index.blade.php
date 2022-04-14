@@ -3,7 +3,7 @@
     <div class="box-shadow">
         <div class="col-12 shadow shadow-lg">
             <div class="py-3">
-                <a href="{{ url('/stok') }}">
+                <a href="{{ route('frontend.stock.index') }}">
                     <img src="{{ asset('images/icon/back.png') }}" width="18" height="18">
                 </a>
             </div>
@@ -15,7 +15,7 @@
     <div class="bg-grey pt-23 mt-1" style="max-height: 86vh; overflow: auto">
         <div class="container-omyra" style="margin-bottom: 90px;">
             <div class="float-right">
-                <a href="{{ url('/stok/plastic/create') }}" class="btn btn-sm btn-primary"
+                <a href="{{ route('frontend.plastic.create') }}" class="btn btn-sm btn-primary"
                     style="border-radius: 30px"> <i class="fa fa-plus"></i> Tambah</a>
             </div>
             <h5 class="py-3"></h5>
