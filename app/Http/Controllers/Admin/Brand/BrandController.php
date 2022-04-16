@@ -43,7 +43,7 @@ class BrandController extends Controller
 
         $params = $request->all();
         Brand::create($params);
-        return redirect()->route('admin.brand.index')->with('success', 'Successfully Created brand!');
+        return redirect()->route('admin.brand.index')->with('success', 'Berhasil menambahkan Brand baru!');
     }
     /**
      * Show the form for editing the specified resource.
@@ -78,7 +78,7 @@ class BrandController extends Controller
         $brand->update([
             'brand_name' => $params['brand_name'] ?? $brand->brand_name,
         ]);
-        return redirect()->route('admin.brand.index')->with('success', 'Successfully Updated brand!');
+        return redirect()->route('admin.brand.index')->with('success', 'Berhasil mengubah Brand!');
     }
 
     /**

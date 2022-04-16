@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     //Inner
     Route::get('/stock/inner', [InnerController::class, 'index'])->name('inner.index');
     Route::get('/stock/inner/create', [InnerController::class, 'create'])->name('inner.create');
+    Route::post('/stock/inner/create', [InnerController::class, 'store'])->name('inner.store');
 
     //Master
     Route::get('/stock/master', [MasterController::class, 'index'])->name('master.index');

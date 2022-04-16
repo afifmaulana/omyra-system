@@ -15,9 +15,11 @@ class CreateStocksTable extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->unsigned();
             $table->foreignId('brand_id')->unsigned();
             $table->foreignId('brand_type_id')->unsigned();
             $table->foreignId('brand_size_id')->unsigned();
+            $table->date('date')->nullable();
             $table->string('stock_type')->nullable();
             $table->string('stock_total')->nullable();
             $table->string('stock_left')->nullable();

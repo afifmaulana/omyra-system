@@ -15,12 +15,8 @@ class CreateLogActivitiesTable extends Migration
     {
         Schema::create('log_activities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('brand_id')->unsigned();
-            $table->foreignId('brand_type_id')->unsigned();
-            $table->foreignId('brand_size_id')->unsigned();
-            $table->foreignId('stock_id')->unsigned();
-            $table->foreignId('semi_finished_size_id')->unsigned();
-            $table->foreignId('finished_id')->unsigned();
+            $table->foreignId('user_id')->unsigned();
+            $table->foreignId('source_id')->unsigned();
             $table->string('source_type')->nullable();
             $table->string('title')->nullable();
             $table->string('description')->nullable();

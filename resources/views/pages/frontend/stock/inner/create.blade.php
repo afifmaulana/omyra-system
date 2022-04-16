@@ -23,31 +23,37 @@
     </div>
     <div class="bg-grey pt-23 mt-1" style="max-height: 86vh; overflow: hidden; margin-bottom: 30px">
         <div class="container-omyra">
-            <form action="">
+            <form action="{{ route('frontend.inner.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label class="font-weight-500">Tanggal</label>
-                    <input type="text" name="" id="" class="datepicker form-control font-size-16 form-omyra" placeholder="Masukkan Tanggal Inner Datang">
+                    <input type="text" name="date" id="" class="datepicker form-control font-size-16 form-omyra" placeholder="Masukkan Tanggal Inner Datang">
                 </div>
                 <div class="form-group">
                     <label class="font-weight-500">Brand</label>
-                    <select class="select2 form-control font-size-16 form-omyra" name="state">
+                    <select class="select2 form-control font-size-16 form-omyra" name="brand_id">
                         <option selected disabled>Pilih Brand</option>
                         {{-- <optgroup label="Test"> --}}
-                        <option value="AL">ADP</option>
-                        <option value="WY">BABYLON</option>
+                        @foreach ($brands as $item)
+                            <option value="{{ $item->id }}">{{ $item->brand_name }}</option>
+                        @endforeach
+
+                        {{-- <option value="WY">BABYLON</option>
                         <option value="WY">COCO PRO</option>
                         <option value="WY">FLARE</option>
                         <option value="WY">MOES KOHLE</option>
-                        <option value="WY">GOLDEN NUGGET</option>
+                        <option value="WY">GOLDEN NUGGET</option> --}}
                         {{-- </optgroup> --}}
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="font-weight-500">Jenis</label>
-                    <select class="select2 form-control font-size-16 form-omyra" name="state">
+                    <select class="select2 form-control font-size-16 form-omyra" name="brand_type_id">
                         <option selected disabled>Pilih Jenis</option>
-                        <optgroup label="ADP">
+                        @foreach ($BrandTypes as $item)
+                            <option value="{{ $item->id }}">{{ $item->brand_type }}</option>
+                        @endforeach
+                        {{-- <optgroup label="ADP">
                             <option value="AL">INNER RZA 1KG</option>
                             <option value="WY">MC RZA 1KG</option>
                             <option value="AL">MC RZA GASTRO 1KG</option>
@@ -86,14 +92,17 @@
                         </optgroup>
                         <optgroup label="COCO PRO">
                             <option value="AL">MASTER COCO PRO</option>
-                        </optgroup>
+                        </optgroup> --}}
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="font-weight-500">Ukuran</label>
-                    <select class="select2 form-control font-size-16 form-omyra" name="state">
+                    <select class="select2 form-control font-size-16 form-omyra" name="size_id">
                         <option selected disabled>Pilih Ukuran</option>
-                        <optgroup label="ADP">
+                        @foreach ($sizes as $item)
+                            <option value="{{ $item->id }}">{{ $item->brand_size }}</option>
+                        @endforeach
+                        {{-- <optgroup label="ADP">
                             <option value="AL">25x25x25</option>
                             <option value="WY">26x26x26</option>
                             <option value="AL">27x27x27</option>
@@ -110,14 +119,15 @@
                             <option value="WY">26x26x26</option>
                             <option value="AL">27x27x27</option>
                             <option value="WY">28x28x28</option>
-                        </optgroup>
+                        </optgroup> --}}
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="font-weight-500">Jumlah Inner</label>
-                    <input type="text" name="" id="" class="form-control font-size-16 form-omyra" placeholder="12.000">
+                    <input type="text" name="stock_total" id="" class="form-control font-size-16 form-omyra" placeholder="12.000">
                 </div>
                 <button class="btn btn-omyra btn-block btn-pink text-white" type="submit">Simpan</button>
+                <a class="btn btn-outline-secondary btn-block" href="{{ route('frontend.inner.index') }}">Kembali</a>
             </form>
         </div>
     </div>

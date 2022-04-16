@@ -15,6 +15,7 @@ class CreateSemiFinishedsTable extends Migration
     {
         Schema::create('semi_finisheds', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->unsigned();
             $table->foreignId('brand_id')->unsigned();
             $table->foreignId('brand_type_id')->unsigned();
             $table->foreignId('brand_size_id')->unsigned();

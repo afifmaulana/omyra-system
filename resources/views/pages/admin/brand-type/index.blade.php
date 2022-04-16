@@ -50,31 +50,7 @@
 
         </div>
         <!-- /page content -->
-
-        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="Delete"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <div class="text-center">
-                            <i style="color: #ffbc05" class="fa fa-question-circle fa-4x"></i>
-                        </div>
-                        <h5 class="text-center p-4">Apakah Anda yakin ingin menghapus data ini?</h5>
-                    </div>
-                    <div class="modal-footer">
-                        <form id="formDelete" action="" method="post">
-                            @csrf
-                            @method('delete')
-                            <button id="deleteButton" type="submit" href=""
-                                class="btn btn-sm btn-danger">Delete</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     @endsection
 
     @push('scripts')
@@ -98,8 +74,8 @@
                     {
                         data: 'action',
                         name: 'action',
-                        orderable: false,
-                        sortable: false
+                        orderable: true,
+                        sortable: true
                     },
                 ];
                 table = $("#dataTable").DataTable({

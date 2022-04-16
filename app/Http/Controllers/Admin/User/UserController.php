@@ -48,7 +48,7 @@ class UserController extends Controller
         unset($params['password']);
         $params['password'] = app('hash')->make($request->password);
         User::create($params);
-        return redirect()->route('admin.user.index')->with('success', 'Successfully Created User!');
+        return redirect()->route('admin.user.index')->with('success', 'Berhasil menambahkan User baru!');
     }
     /**
      * Show the form for editing the specified resource.
@@ -92,7 +92,7 @@ class UserController extends Controller
             'role' => $params['role'] ?? $user->role,
             'password' => $params['password'] ?? $user->password,
         ]);
-        return redirect()->route('admin.user.index')->with('success', 'Successfully Updated User!');
+        return redirect()->route('admin.user.index')->with('success', 'Berhasil mengubah User!');
     }
 
     /**

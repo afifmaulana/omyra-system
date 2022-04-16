@@ -51,4 +51,3 @@
         </div>
     <!-- /page content -->
 @endsection
-4

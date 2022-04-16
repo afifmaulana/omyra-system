@@ -43,7 +43,7 @@ class SizeController extends Controller
 
         $params = $request->all();
         Size::create($params);
-        return redirect()->route('admin.size.index')->with('success', 'Successfully Created size!');
+        return redirect()->route('admin.size.index')->with('success', 'Berhasil menambahkan Ukuran baru!');
     }
     /**
      * Show the form for editing the specified resource.
@@ -78,7 +78,7 @@ class SizeController extends Controller
         $size->update([
             'brand_size' => $params['brand_size'] ?? $size->brand_size,
         ]);
-        return redirect()->route('admin.size.index')->with('success', 'Successfully Updated size!');
+        return redirect()->route('admin.size.index')->with('success', 'Berhasil mengubah Ukuran!');
     }
 
     /**
