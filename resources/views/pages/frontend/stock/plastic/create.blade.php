@@ -118,6 +118,7 @@
                     <input type="text" name="" id="" class="form-control font-size-16 form-omyra" placeholder="12.000">
                 </div>
                 <button class="btn btn-omyra btn-block btn-pink text-white" type="submit">Simpan</button>
+                <a class="btn btn-outline-secondary btn-block" href="{{ route('frontend.plastic.index') }}">Kembali</a>
             </form>
         </div>
     </div>
