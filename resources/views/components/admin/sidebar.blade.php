@@ -11,7 +11,7 @@
         <!-- menu profile quick info -->
         <div class="profile clearfix">
             <div class="profile_pic">
-                <img src="{{ asset('assets-admin/build/images/back_disabled.png') }}" alt="..."
+                <img src="{{ asset('assets-admin/build/images/avatar.png') }}" alt="..."
                     class="img-circle profile_img">
             </div>
             <div class="profile_info">

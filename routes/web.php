@@ -11,7 +11,7 @@ use App\Http\Controllers\Frontend\Briquette\FinishedController;
 use App\Http\Controllers\Frontend\Briquette\SemiFinishedController;
 use App\Http\Controllers\Frontend\Dashboard\DashboardController as FrontendDashboardController;
 use App\Http\Controllers\Frontend\Notification\NotificationController;
-use App\Http\Controllers\Frontend\Profile\ProfileController as ProfileProfileController;
+use App\Http\Controllers\Frontend\Profile\ProfileController as FrontendProfileController;
 use App\Http\Controllers\Frontend\Stock\InnerController;
 use App\Http\Controllers\Frontend\Stock\MasterController;
 use App\Http\Controllers\Frontend\Stock\PlasticController;
@@ -55,7 +55,7 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::get('/briquette/finished/create', [FinishedController::class, 'create'])->name('finished.create');
 
     //Profile User
-    Route::get('/profile', [ProfileProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile', [FrontendProfileController::class, 'index'])->name('profile.index');
 });
 
     Route::get('/login-admin', [LoginController::class, 'showLoginForm'])->name('login');
@@ -106,6 +106,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin'], 'as' => 'ad
 
     Route::prefix('profile')->group(function (){
         Route::get('edit', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('edit', [ProfileController::class, 'update'])->name('profile.update');
     });
 });
 

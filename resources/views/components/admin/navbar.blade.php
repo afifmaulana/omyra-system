@@ -8,7 +8,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="">
             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-              <img src="{{ asset('assets-admin/build/images/back_disabled.png') }}" alt="">Afif
+              <img src="{{ asset('assets-admin/build/images/avatar.png') }}" alt="">Afif
               <span class=" fa fa-angle-down"></span>
             </a>
             <ul class="dropdown-menu dropdown-usermenu pull-right">
