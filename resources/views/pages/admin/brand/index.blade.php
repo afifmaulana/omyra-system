@@ -1,8 +1,6 @@
 @extends('layouts.admin.app')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('assets-admin/assets/dataTable/css/select.dataTables.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets-admin/assets/dataTable/css/responsive.dataTables.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets-admin/assets/dataTable/css/datatables.css') }}">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css" />
 
 @endpush
 @section('content')
@@ -50,36 +48,11 @@
 
         </div>
         <!-- /page content -->
-
-        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="Delete"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <div class="text-center">
-                            <i style="color: #ffbc05" class="fa fa-question-circle fa-4x"></i>
-                        </div>
-                        <h5 class="text-center p-4">Apakah Anda yakin ingin menghapus data ini?</h5>
-                    </div>
-                    <div class="modal-footer">
-                        <form id="formDelete" action="" method="post">
-                            @csrf
-                            @method('delete')
-                            <button id="deleteButton" type="submit" href=""
-                                class="btn btn-sm btn-danger">Delete</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
     @endsection
 
     @push('scripts')
-    <script src="{{ asset('assets-admin/assets/dataTable/js/datatables.js') }}"></script>
-    <script src="{{ asset('assets-admin/assets/dataTable/js/dataTables.responsive.min.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script>
             // Jquery Datatable
@@ -98,8 +71,8 @@
                     {
                         data: 'action',
                         name: 'action',
-                        orderable: false,
-                        sortable: false
+                        orderable: true,
+                        sortable: true
                     },
                 ];
                 table = $("#dataTable").DataTable({
