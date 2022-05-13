@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::get('/', [FrontendDashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/notification', [NotificationController::class, 'index'])->name('notification.index');
@@ -111,6 +112,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin'], 'as' => 'ad
 });
 
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

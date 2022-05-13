@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\BrandType;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\BrandType;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,10 @@ class BrandTypeController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.brand-type.create');
+        $brand = Brand::all();
+        return view('pages.admin.brand-type.create',[
+            'brand' => $brand,
+        ]);
     }
 
     /**
@@ -39,10 +43,15 @@ class BrandTypeController extends Controller
         // dd($request->all());
         $this->validate($request, [
             'brand_type' => 'required|string',
+            'brand' => 'required|string',
+            'box_type' => 'required|string',
         ]);
-
-        $params = $request->all();
-        BrandType::create($params);
+        // $params = $request->all();
+        $brandType = new BrandType();
+        $brandType->brand_type = $request->brand_type;
+        $brandType->brand = $request->brand;
+        $brandType->box_type = $request->box_type;
+        $brandType->save;
         return redirect()->route('admin.brand-type.index')->with('success', 'Berhasil menambahkan Jenis Brand baru!');
     }
     /**
@@ -70,6 +79,8 @@ class BrandTypeController extends Controller
     {
         $this->validate($request, [
             'brand_type' => 'required|string',
+            'brand' => 'required|string',
+            'box_type' => 'required|string',
         ]);
 
         $brandType = BrandType::where('id', $id)->first();

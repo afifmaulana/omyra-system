@@ -11,7 +11,7 @@
                     </div>
                     <div class="row justify-content-center w-100" style="position: absolute; top: 15px;">
                         <div class="mr-2">
-                            <img src="{{ asset('images/logo.png') }}" alt="m-health" width="20">
+                            <img src="{{ asset('images/logo.png') }}" alt="m-omyra" width="20">
                         </div>
                         <div class="text-active-pink font-weight-500 font-size-19"><b>Omyra</b></div>
                     </div>
@@ -20,7 +20,6 @@
 
             <div class="mb-4 text-center">
                 <div class="font-size-24 font-weight-700">Masuk</div>
-                <p>Ibu belum punya akun? <a href="" class="text-pink"><u>Daftar</u></a></p>
             </div>
 
             <form action="" method="POST" class="mb-4">

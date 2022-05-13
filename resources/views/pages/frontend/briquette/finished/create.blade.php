@@ -31,23 +31,29 @@
                 </div>
                 <div class="form-group">
                     <label class="font-weight-500">Brand</label>
-                    <select class="select2 form-control font-size-16 form-omyra" name="state">
+                    <select class="select2 form-control font-size-16 form-omyra" name="brand_id">
                         <option selected disabled>Pilih Brand</option>
                         {{-- <optgroup label="Test"> --}}
-                        <option value="AL">ADP</option>
-                        <option value="WY">BABYLON</option>
+                        @foreach ($brands as $item)
+                            <option value="{{ $item->id }}">{{ $item->brand_name }}</option>
+                        @endforeach
+
+                        {{-- <option value="WY">BABYLON</option>
                         <option value="WY">COCO PRO</option>
                         <option value="WY">FLARE</option>
                         <option value="WY">MOES KOHLE</option>
-                        <option value="WY">GOLDEN NUGGET</option>
+                        <option value="WY">GOLDEN NUGGET</option> --}}
                         {{-- </optgroup> --}}
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="font-weight-500">Jenis</label>
-                    <select class="select2 form-control font-size-16 form-omyra" name="state">
+                    <select class="select2 form-control font-size-16 form-omyra" name="brand_type_id">
                         <option selected disabled>Pilih Jenis</option>
-                        <optgroup label="ADP">
+                        @foreach ($BrandTypes as $item)
+                            <option value="{{ $item->id }}">{{ $item->brand_type }}</option>
+                        @endforeach
+                        {{-- <optgroup label="ADP">
                             <option value="AL">INNER RZA 1KG</option>
                             <option value="WY">MC RZA 1KG</option>
                             <option value="AL">MC RZA GASTRO 1KG</option>
@@ -86,14 +92,17 @@
                         </optgroup>
                         <optgroup label="COCO PRO">
                             <option value="AL">MASTER COCO PRO</option>
-                        </optgroup>
+                        </optgroup> --}}
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="font-weight-500">Ukuran</label>
-                    <select class="select2 form-control font-size-16 form-omyra" name="state">
+                    <select class="select2 form-control font-size-16 form-omyra" name="size_id">
                         <option selected disabled>Pilih Ukuran</option>
-                        <optgroup label="ADP">
+                        @foreach ($sizes as $item)
+                            <option value="{{ $item->id }}">{{ $item->brand_size }}</option>
+                        @endforeach
+                        {{-- <optgroup label="ADP">
                             <option value="AL">25x25x25</option>
                             <option value="WY">26x26x26</option>
                             <option value="AL">27x27x27</option>
@@ -110,7 +119,7 @@
                             <option value="WY">26x26x26</option>
                             <option value="AL">27x27x27</option>
                             <option value="WY">28x28x28</option>
-                        </optgroup>
+                        </optgroup> --}}
                     </select>
                 </div>
                 <div class="form-group">
