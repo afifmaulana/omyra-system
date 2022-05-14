@@ -22,7 +22,7 @@
                 <div class="font-size-24 font-weight-700">Masuk</div>
             </div>
 
-            <form action="" method="POST" class="mb-4">
+            <form action="{{ route('login.frontend.submit') }}" method="POST" class="mb-4">
                 @csrf
                 <div class="form-group">
                     <label class="font-weight-500" for="email">Email</label>

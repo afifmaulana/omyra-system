@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    <div class="mt-1" style="max-height: 86vh; overflow: auto">
+    <div class="mt-1" style="max-height: 86vh; overflow: scroll;">
         <div class="container-omyra" style="margin-bottom: 90px;">
             <div class="row mb-2 px-2">
                 <div class="col-4">

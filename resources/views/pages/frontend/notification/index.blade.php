@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    <div class="bg-grey mt-1" style="max-height: 86vh; overflow: auto">
+    <div class="bg-grey mt-1" style="max-height: 86vh; overflow: scroll;">
         <div class="container-omyra" style="margin-bottom: 90px;">
             <div class="d-flex">
                 {{-- <div class="mr-19 h-94 w-94 d-inline-block">

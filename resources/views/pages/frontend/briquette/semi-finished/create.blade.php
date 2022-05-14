@@ -21,7 +21,7 @@
             </div>
         </div>
     </div>
-    <div class="bg-grey pt-23 mt-1" style="max-height: 86vh; overflow: hidden">
+    <div class="bg-grey pt-23 mt-1" style="max-height: 86vh; overflow: scroll;">
         <div class="container-omyra" style="margin-bottom: 90px;">
             <form action="">
                 @csrf
@@ -42,12 +42,6 @@
                             <option value="{{ $item->id }}">{{ $item->brand_name }}</option>
                         @endforeach
 
-                        {{-- <option value="WY">BABYLON</option>
-                        <option value="WY">COCO PRO</option>
-                        <option value="WY">FLARE</option>
-                        <option value="WY">MOES KOHLE</option>
-                        <option value="WY">GOLDEN NUGGET</option> --}}
-                        {{-- </optgroup> --}}
                     </select>
                 </div>
                 <div class="form-group">
@@ -57,46 +51,7 @@
                         @foreach ($BrandTypes as $item)
                             <option value="{{ $item->id }}">{{ $item->brand_type }}</option>
                         @endforeach
-                        {{-- <optgroup label="ADP">
-                            <option value="AL">INNER RZA 1KG</option>
-                            <option value="WY">MC RZA 1KG</option>
-                            <option value="AL">MC RZA GASTRO 1KG</option>
-                            <option value="WY">INNER BLACK 1KG</option>
-                            <option value="WY">MC BLACK 1KG</option>
-                            <option value="WY">MC BLACK GASTRO 1KG</option>
-                            <option value="WY">INNER BLUE  1KG</option>
-                            <option value="WY">MC BLUE 1KG</option>
-                            <option value="WY">MC BLUE 3KG</option>
-                            <option value="WY">MC BLUE GASTRO 1KG</option>
-                            <option value="WY">INNER LIGHT BLUE YPSILON</option>
-                            <option value="WY">MC LIGHT BLUE YPSILON</option>
-                            <option value="WY">INNER YELLOW</option>
-                            <option value="WY">MC YELLOW</option>
-                            <option value="WY">INNER ORANGE</option>
-                            <option value="WY">MC ORANGE</option>
-                            <option value="WY">INNER GREEN</option>
-                            <option value="WY">MC GREEN</option>
-                        </optgroup>
-                        <optgroup label="BABYLON">
-                            <option value="AL">INNER 1KG</option>
-                            <option value="WY">MC 20KG</option>
-                            <option value="AL">MC CURAH</option>
-                            <option value="WY">INNER COCO GOLDEN CLASS</option>
-                            <option value="WY">MC COCO GOLDEN CLASS</option>
-                        </optgroup>
-                        <optgroup label="FLARE">
-                            <option value="AL">INNER 2KG</option>
-                            <option value="WY">MC 12KG</option>
-                            <option value="AL">INNER SMALL 0,375</option>
-                            <option value="WY">MC SMALL 9KG</option>
-                            <option value="WY">INNER MEDIUM</option>
-                            <option value="WY">MC MEDIUM</option>
-                            <option value="WY">INNER STARCOCO</option>
-                            <option value="WY">MC STARCOCO</option>
-                        </optgroup>
-                        <optgroup label="COCO PRO">
-                            <option value="AL">MASTER COCO PRO</option>
-                        </optgroup> --}}
+
                     </select>
                 </div>
                 <div class="form-group">

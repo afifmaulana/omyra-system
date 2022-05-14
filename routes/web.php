@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\Profile\ProfileController;
 use App\Http\Controllers\Admin\Size\SizeController;
 use App\Http\Controllers\Admin\User\UserController;
+use App\Http\Controllers\Auth\Frontend\LoginFrontendController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Frontend\Briquette\FinishedController;
 use App\Http\Controllers\Frontend\Briquette\SemiFinishedController;
@@ -28,6 +29,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/login-frontend', [LoginFrontendController::class, 'showLoginForm'])->name('login.frontend');
+Route::post('/login-frontend/submit', [LoginFrontendController::class, 'login'])->name('login.frontend.submit');
+Route::get('/login-frontend/logout', [LoginFrontendController::class, 'logout'])->name('logout.frontend');
 
 Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::get('/', [FrontendDashboardController::class, 'index'])->name('dashboard.index');

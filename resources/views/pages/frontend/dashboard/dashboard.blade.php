@@ -14,6 +14,9 @@
                     <a href="{{ route('frontend.notification.index') }}">
                         <img src="{{ asset('images/icon/notification.png') }}" width="25" height="25">
                     </a>
+                    {{-- <a href="">
+                        <img src="{{ asset('images/logout.png') }}" width="25" height="25">
+                    </a> --}}
                     {{-- <i class="fas fa-bell fa-lg text-white"></i> --}}
                 </div>
             </div>

@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    <div class="pb-3 bg-grey mt-1" style="max-height: 86vh; overflow: auto">
+    <div class="pb-3 bg-grey mt-1" style="max-height: 86vh; overflow: scroll;">
         <div class="container-omyra pt-2">
             <form action="">
                 @csrf
@@ -34,6 +34,7 @@
                         placeholder="Mandor Borongan">
                 </div>
                 <button class="btn btn-block btn-omyra btn-pink text-white mt-3" type="submit">Simpan Perubahan</button>
+                <a class="btn btn-outline-secondary btn-block" href="{{ route('logout.frontend') }}">Keluar</a>
             </form>
         </div>
     </div>

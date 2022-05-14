@@ -75,12 +75,12 @@ class LoginFrontendController extends Controller
         if (Auth::attempt($credential, true)){
             $user = Auth::user();
             if (!$user->deleted_at) {
-                if ($user->role == 1){
-                    return redirect()->intended(route('frontend.dashboard.index'));
-                }else if ($user->role == 2){
-                    return redirect()->intended(route('frontend.finished.index'));
+                if ($user->role == 0){
+                    return redirect()->intended(route('admin.dashboard.index'));
+                }else if ($user->role == 1){
+                    return redirect()->intended(route('admin.brand-type.index'));
                 }else{
-                    return redirect()->back();
+                    return redirect()->intended(route('admin.brand.index'));
                 }
             }else{
                 $errors = new MessageBag(['email' => 'your account has been deleted']);
@@ -98,6 +98,6 @@ class LoginFrontendController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('login.frontend');
     }
 }
