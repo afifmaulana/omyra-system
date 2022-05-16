@@ -15,8 +15,8 @@ class CreateBrandTypesTable extends Migration
     {
         Schema::create('brand_types', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('brand_id')->unsigned();
             $table->string('brand_type')->nullable();
-            $table->string('brand')->nullable();
             $table->string('box_type')->nullable();
             $table->timestamps();
         });

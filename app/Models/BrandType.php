@@ -15,4 +15,8 @@ class BrandType extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
+    }
 }

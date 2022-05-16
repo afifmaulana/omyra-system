@@ -65,35 +65,36 @@ class LoginController extends Controller
             'password' => $request->password,
         ];
 
-        // if (Auth::attempt($credential, $request->remember)) {
-        //     return response()->json([
-		// 		'status' => true,
-		// 		'message' => 'berhasil login'
-		// 	]);
-		// 	//redirect()->intended(route('dashboard.index'));
-        // }
-
-        if (Auth::attempt($credential, true)){
-            $user = Auth::user();
-            if (!$user->deleted_at) {
-                if ($user->role == 0){
-                    return redirect()->intended(route('admin.dashboard.index'));
-                }else if ($user->role == 1){
-                    return redirect()->intended(route('admin.brand-type.index'));
-                }else{
-                    return redirect()->intended(route('admin.brand.index'));
-                }
-            }else{
-                $errors = new MessageBag(['email' => 'your account has been deleted']);
-                return redirect()->back()->withInput($request->only('email'))
-                ->withErrors($errors);
-            }
-
+        if (Auth::attempt($credential, $request->remember)) {
+            return redirect()->intended(route('admin.dashboard.index'));
         }
 
-        $errors = new MessageBag(['email' => 'enter the correct email and password']);
-                return redirect()->back()->withInput($request->only('email'))
-                ->withErrors($errors);
+        return redirect()->back()->withInput($request->only('email', 'remember'))
+            ->withErrors([
+                'failed' => 'Email/Password yang Anda masukan salah',
+            ]);
+
+        // if (Auth::attempt($credential, true)){
+        //     $user = Auth::user();
+        //     if (!$user->deleted_at) {
+        //         if ($user->role == 0){
+        //             return redirect()->intended(route('admin.dashboard.index'));
+        //         }else if ($user->role == 1){
+        //             return redirect()->intended(route('admin.brand-type.index'));
+        //         }else{
+        //             return redirect()->intended(route('admin.brand.index'));
+        //         }
+        //     }else{
+        //         $errors = new MessageBag(['email' => 'your account has been deleted']);
+        //         return redirect()->back()->withInput($request->only('email'))
+        //         ->withErrors($errors);
+        //     }
+
+        // }
+
+        // $errors = new MessageBag(['email' => 'enter the correct email and password']);
+        //         return redirect()->back()->withInput($request->only('email'))
+        //         ->withErrors($errors);
     }
 
     public function logout()
