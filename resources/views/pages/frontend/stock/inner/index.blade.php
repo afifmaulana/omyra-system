@@ -20,90 +20,29 @@
             </div>
             <h5 class="py-3"></h5>
 
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
+                        <th>No</th>
                         <th>Tanggal</th>
                         <th>Brand</th>
                         <th>Jenis</th>
+                        <th>Ukuran</th>
                         <th>Jumlah</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>
-                            <a href="">
-                                <button class="btn-sm btn-outline-warning"><i class="fa fa-edit"></i></button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>
-                            <a href="">
-                                <button class="btn-sm btn-outline-warning"><i class="fa fa-edit"></i></button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>Junior Technical Author</td>
-                        <td>San Francisco</td>
-                        <td>
-                            <a href="">
-                                <button class="btn-sm btn-outline-warning"><i class="fa fa-edit"></i></button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>Edinburgh</td>
-                        <td>
-                            <a href="">
-                                <button class="btn-sm btn-outline-warning"><i class="fa fa-edit"></i></button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Airi Satou</td>
-                        <td>Accountant</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>
-                            <a href="">
-                                <button class="btn-sm btn-outline-warning"><i class="fa fa-edit"></i></button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Brielle Williamson</td>
-                        <td>Integration Specialist</td>
-                        <td>Integration Specialist</td>
-                        <td>New York</td>
-                        <td>
-                            <a href="">
-                                <button class="btn-sm btn-outline-warning"><i class="fa fa-edit"></i></button>
-                            </a>
-                        </td>
-                    </tr>
+
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Position</th>
-                        <th>Office</th>
+                        <th>No</th>
+                        <th>Tanggal</th>
+                        <th>Brand</th>
+                        <th>Jenis</th>
+                        <th>Ukuran</th>
+                        <th>Jumlah</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
@@ -113,11 +52,119 @@
 @endsection
 
 @push('scripts')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
         $('.datepicker').datepicker({
             autoclose: true,
             format: 'dd/mm/yyyy'
         });
+        if ($('#dataTable').length) {
+                let url = "{{ route('frontend.inner.datatables') }}";
+                let rowData = [{
+                        data: 'id',
+                        name: 'id'
+                    },
+                    {
+                        data: 'date',
+                        name: 'date'
+                    },
+                    {
+                        data: 'brand_id',
+                        name: 'brand_id'
+                    },
+                    {
+                        data: 'brand_type_id',
+                        name: 'brand_type_id'
+                    },
+                    {
+                        data: 'brand_size_id',
+                        name: 'brand_size_id'
+                    },
+                    {
+                        data: 'stock_total',
+                        name: 'stock_total'
+                    },
+                    // { data: 'deleted', name: 'deleted' },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: true,
+                        sortable: true
+                    },
+                ];
+                table = $("#dataTable").DataTable({
+                    dom: 'Brtp',
+                    paging: true,
+                    responsive: false,
+                    autoWidth: false,
+                    bPaginate: true,
+                    processing: true,
+                    serverSide: true,
+                    order: [0, 'desc'],
+                    oLanguage: {
+                        oPaginate: {
+                            sNext: '<span class="pagination-fa"><i class="fa fa-chevron-right" ></i></span>',
+                            sPrevious: '<span class="pagination-fa"><i class="fa fa-chevron-left" ></i></span>'
+                        }
+                    },
+                    ajax: {
+                        url: url,
+                        type: "POST",
+                        data: function(d) {
+                            d._token = "{{ csrf_token() }}"
+                            d.id = $('input[name=stock_id]').val()
+                            d.date = $('input[name=date]').val()
+                            d.brand_id = $('input[name=brand_id]').val()
+                            d.brand_type_id = $('input[name=brand_type_id]').val()
+                            d.brand_size_id = $('input[name=brand_size_id]').val()
+                            d.stock_total = $('input[name=stock_total]').val()
+                        }
+                    },
+                    columns: rowData
+                });
+            }
+            $(document).on('click', '.btn-delete', function(e) {
+                e.preventDefault()
+                const id = $(this).data('id')
+                Swal.fire({
+                    text: 'Are you sure you want to delete this data?',
+                    showCancelButton: true,
+                    confirmButtonText: `Delete`,
+                    cancelButtonText: `No`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                        $.ajax({
+                            type: 'delete',
+                            url: "{{ route('frontend.inner.delete', '') }}" + "/" + id,
+                            data: {
+                                "_token": "{{ csrf_token() }}"
+                            },
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            dataType: 'json',
+                            beforeSend: function() {
+
+                            },
+                            success: function(res) {
+                                if (res.status) {
+                                    Swal.fire('Deleted!', '', 'success')
+                                    table.ajax.reload()
+                                }
+                            }
+                        })
+
+                    } else if (result.isDenied) {
+                        Swal.fire('Changes are not saved', '', 'info')
+                    }
+                })
+
+            })
 
     </script>
 @endpush

@@ -27,6 +27,6 @@ class Stock extends Model
 
     public function size()
     {
-        return $this->belongsTo(Size::class, 'size_id', 'id');
+        return $this->belongsTo(Size::class, 'brand_size_id', 'id');
     }
 }

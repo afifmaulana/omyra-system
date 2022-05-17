@@ -21,11 +21,11 @@ class InnerController extends Controller
 
     public function create()
     {
-        $brands = Brand::all();
+        $stocks = Brand::all();
         $BrandTypes = BrandType::all();
         $sizes = Size::all();
         return view('pages.frontend.stock.inner.create', [
-            'brands' => $brands,
+            'stocks' => $stocks,
             'BrandTypes' => $BrandTypes,
             'sizes' => $sizes,
         ]);
@@ -57,6 +57,59 @@ class InnerController extends Controller
             dd($e->getMessage());
             // return redirect()->back
         }
+    }
 
+    public function destroy($id)
+    {
+        $stock = Stock::where('id', $id)->first();
+        $stock->delete();
+        return json_encode([
+            'status' => true
+        ]);
+    }
+
+    public function datatables(Request $request)
+    {
+        // return $request->all();
+        $limit = $request->input('length');
+        $offset = $request->input('start');
+        $draw = $request->input('draw');
+        $stocks = Stock::select('*');
+
+        $stocks = $this->filterDatatables($request, $stocks);
+
+        $total = $stocks->count();
+        $stocks->take($limit)->skip($offset);
+        $output = [];
+
+        $data =  [];
+        foreach ($stocks->get() as $key => $row) {
+            $item["id"] = $row->id;
+            $item["date"] = $row->date;
+            $item["brand_id"] = $row->brand->brand_name;
+            $item["brand_type_id"] = $row->BrandType->brand_type;
+            $item["brand_size_id"] = $row->size->brand_size;
+            $item["stock_total"] = $row->stock_total;
+
+            $item['action'] = '<a href="' . route('admin.brand.edit', $row->id) . '" class="btn btn-sm btn-info mr-2" data-toggle="edit"><i class="fa fa-edit"></i></a>';
+            $item['action'] .= '<a href="#"  data-id="'.$row['id'].'" rel="noreferrer"class="btn btn-delete btn-sm btn-danger" title="Delete" data-toggle="tooltip" data-placement="top"><i class="fa fa-trash"></i></a>';
+            $data[] = $item;
+        }
+        $output['data'] = $data;
+        $output['draw'] = $draw;
+        $output['recordsTotal'] = $output['recordsFiltered'] = $total;
+        return json_encode($output);
+    }
+
+    private function filterDatatables($request, $stocks)
+    {
+        if ($request->id) {
+            $stocks->where('stocks.id', 'like', '%' . $request->id . '%');
+        }
+        if ($request->brand_name) {
+            $stocks->where('brand_name', 'like', '%' . $request->brand_name . '%');
+        }
+
+        return $stocks;
     }
 }

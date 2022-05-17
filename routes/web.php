@@ -40,8 +40,10 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
 
     //Inner
     Route::get('/stock/inner', [InnerController::class, 'index'])->name('inner.index');
+    Route::post('/stock/inner', [InnerController::class, 'datatables'])->name('inner.datatables');
     Route::get('/stock/inner/create', [InnerController::class, 'create'])->name('inner.create');
     Route::post('/stock/inner/create', [InnerController::class, 'store'])->name('inner.store');
+    Route::delete('{id}', [InnerController::class, 'destroy'])->name('inner.delete');
 
     //Master
     Route::get('/stock/master', [MasterController::class, 'index'])->name('master.index');
