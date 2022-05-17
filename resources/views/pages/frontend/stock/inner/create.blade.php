@@ -27,17 +27,29 @@
                 @csrf
                 <div class="form-group">
                     <label class="font-weight-500">Tanggal</label>
-                    <input type="text" name="date" id="" class="datepicker form-control font-size-16 form-omyra"
+                    <input type="text" name="date" id=""
+                        class="datepicker form-control font-size-16 form-omyra {{ $errors->has('date') ? 'is-invalid' : '' }}"
                         placeholder="Masukkan Tanggal Inner Datang">
+                    @if ($errors->has('date'))
+                        <span class="invalid-feedback" role="alert">
+                            <p><b>{{ $errors->first('date') }}</b></p>
+                        </span>
+                    @endif
                 </div>
                 <div class="form-group">
                     <label class="font-weight-500">Brand</label>
-                    <select id="input-brand-id" class="select2 form-control font-size-16 form-omyra" name="brand_id">
+                    <select id="input-brand-id"
+                    class="select2 form-control font-size-16 form-omyra {{ $errors->has('brand_id') ? 'is-invalid' : '' }}" name="brand_id">
                         <option selected disabled>Pilih Brand</option>
                         {{-- <optgroup label="Test"> --}}
                         @foreach ($brands as $item)
                             <option value="{{ $item->id }}">{{ $item->brand_name }}</option>
                         @endforeach
+                        @if ($errors->has('brand_id'))
+                            <span class="invalid-feedback" role="alert">
+                                <p><b>{{ $errors->first('brand_id') }}</b></p>
+                            </span>
+                        @endif
 
                         {{-- <option value="WY">BABYLON</option>
                         <option value="WY">COCO PRO</option>
@@ -49,7 +61,8 @@
                 </div>
                 <div class="form-group">
                     <label class="font-weight-500">Jenis</label>
-                    <select id="input-brand-type-id" class="select2 form-control font-size-16 form-omyra"
+                    <select id="input-brand-type-id"
+                    class="select2 form-control font-size-16 form-omyra {{ $errors->has('brand_type_id') ? 'is-invalid' : '' }}"
                         name="brand_type_id">
                         {{-- <option selected disabled>Pilih Jenis</option>
                         @foreach ($BrandTypes as $item)
@@ -99,11 +112,17 @@
                 </div>
                 <div class="form-group">
                     <label class="font-weight-500">Ukuran</label>
-                    <select class="select2 form-control font-size-16 form-omyra" name="brand_size_id">
+                    <select class="select2 form-control font-size-16 form-omyra {{ $errors->has('brand_size_id') ? 'is-invalid' : '' }}"
+                         name="brand_size_id">
                         <option selected disabled>Pilih Ukuran</option>
                         @foreach ($sizes as $item)
                             <option value="{{ $item->id }}">{{ $item->brand_size }}</option>
                         @endforeach
+                        @if ($errors->has('brand_size_id'))
+                            <span class="invalid-feedback" role="alert">
+                                <p><b>{{ $errors->first('brand_size_id') }}</b></p>
+                            </span>
+                        @endif
                         {{-- <optgroup label="ADP">
                             <option value="AL">25x25x25</option>
                             <option value="WY">26x26x26</option>
@@ -126,8 +145,14 @@
                 </div>
                 <div class="form-group">
                     <label class="font-weight-500">Jumlah Inner</label>
-                    <input type="text" name="stock_total" id="" class="form-control font-size-16 form-omyra"
+                    <input type="text" name="stock_total" id=""
+                    class="form-control font-size-16 form-omyra {{ $errors->has('stock_total') ? 'is-invalid' : '' }}"
                         placeholder="12.000">
+                    @if ($errors->has('stock_total'))
+                        <span class="invalid-feedback" role="alert">
+                            <p><b>{{ $errors->first('stock_total') }}</b></p>
+                        </span>
+                    @endif
                 </div>
                 <button class="btn btn-omyra btn-block btn-pink text-white" type="submit">Simpan</button>
                 <a class="btn btn-outline-secondary btn-block" href="{{ route('frontend.inner.index') }}">Kembali</a>

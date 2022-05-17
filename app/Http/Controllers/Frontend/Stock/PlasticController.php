@@ -3,7 +3,13 @@
 namespace App\Http\Controllers\Frontend\Stock;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\BrandType;
+use App\Models\Size;
+use App\Models\Stock;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PlasticController extends Controller
 {
@@ -14,6 +20,42 @@ class PlasticController extends Controller
 
     public function create()
     {
-        return view('pages.frontend.stock.plastic.create');
+        $brands = Brand::all();
+        $BrandTypes = BrandType::all();
+        $sizes = Size::all();
+        return view('pages.frontend.stock.plastic.create', [
+            'brands' => $brands,
+            'BrandTypes' => $BrandTypes,
+            'sizes' => $sizes,
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        // dd($request->all());
+        $params = $this->validate($request, [
+            'date' => 'required',
+            'brand_id' => 'required',
+            'brand_type_id' => 'required',
+            'brand_size_id' => 'required',
+            'stock_total' => 'required',
+        ]);
+        DB::beginTransaction();
+        try{
+            $params['date'] = Carbon::parse($params['date'])->format('Y-m-d');
+            $params['user_id'] = auth()->id();
+            $params['stock_type'] = 'PLASTIC';
+            $params['stock_left'] = $params['stock_total'];
+            Stock::create($params);
+
+
+            DB::commit();
+            return redirect()->route('frontend.plastic.index')->with('success', 'Berhasil menambahkan data Plastik');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            dd($e->getMessage());
+            // return redirect()->back
+        }
+
     }
 }

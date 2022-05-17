@@ -46,10 +46,12 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     //Master
     Route::get('/stock/master', [MasterController::class, 'index'])->name('master.index');
     Route::get('/stock/master/create', [MasterController::class, 'create'])->name('master.create');
+    Route::post('/stock/master/create', [MasterController::class, 'store'])->name('master.store');
 
     //Plastic
     Route::get('/stock/plastic', [PlasticController::class, 'index'])->name('plastic.index');
     Route::get('/stock/plastic/create', [PlasticController::class, 'create'])->name('plastic.create');
+    Route::post('/stock/plastic/create', [PlasticController::class, 'store'])->name('plastic.store');
 
     //Semi-Finished Briquette
     Route::get('/briquette/semi-finished', [SemiFinishedController::class, 'index'])->name('semi-finished.index');

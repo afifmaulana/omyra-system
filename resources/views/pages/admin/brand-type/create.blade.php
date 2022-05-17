@@ -63,6 +63,7 @@
                                             <option value="" selected disabled>---- Pilih Jenis Box ----</option>
                                             <option value="INNER">INNER</option>
                                             <option value="MASTER">MASTER</option>
+                                            <option value="PLASTIC">PLASTIC</option>
                                         </select>
                                     </div>
                                 </div>
