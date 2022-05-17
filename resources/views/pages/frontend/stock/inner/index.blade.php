@@ -139,10 +139,10 @@
                             }
                         });
                         $.ajax({
-                            type: 'delete',
-                            url: "{{ route('frontend.inner.delete', '') }}" + "/" + id,
+                            type: 'get',
+                            url: "{{ url('/stock/inner/delete') }}" + "/" + id,
                             data: {
-                                "_token": "{{ csrf_token() }}"
+                                // "_token": "{{ csrf_token() }}"
                             },
                             cache: false,
                             contentType: false,
@@ -152,6 +152,7 @@
 
                             },
                             success: function(res) {
+                                console.log(res)
                                 if (res.status) {
                                     Swal.fire('Deleted!', '', 'success')
                                     table.ajax.reload()

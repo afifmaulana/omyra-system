@@ -64,7 +64,8 @@ class InnerController extends Controller
         $stock = Stock::where('id', $id)->first();
         $stock->delete();
         return json_encode([
-            'status' => true
+            'status' => true,
+            // 'stock' => $stock,
         ]);
     }
 
@@ -74,16 +75,14 @@ class InnerController extends Controller
         $limit = $request->input('length');
         $offset = $request->input('start');
         $draw = $request->input('draw');
-        $stocks = Stock::select('*');
-
-        $stocks = $this->filterDatatables($request, $stocks);
+        $stocks = Stock::where('stock_type', 'INNER')->get();
 
         $total = $stocks->count();
         $stocks->take($limit)->skip($offset);
         $output = [];
 
         $data =  [];
-        foreach ($stocks->get() as $key => $row) {
+        foreach ($stocks as $key => $row) {
             $item["id"] = $row->id;
             $item["date"] = $row->date;
             $item["brand_id"] = $row->brand->brand_name;
@@ -99,17 +98,5 @@ class InnerController extends Controller
         $output['draw'] = $draw;
         $output['recordsTotal'] = $output['recordsFiltered'] = $total;
         return json_encode($output);
-    }
-
-    private function filterDatatables($request, $stocks)
-    {
-        if ($request->id) {
-            $stocks->where('stocks.id', 'like', '%' . $request->id . '%');
-        }
-        if ($request->brand_name) {
-            $stocks->where('brand_name', 'like', '%' . $request->brand_name . '%');
-        }
-
-        return $stocks;
     }
 }
