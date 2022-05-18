@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend\Stock;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\BrandType;
+use App\Models\LogActivity;
 use App\Models\Size;
 use App\Models\Stock;
 use Carbon\Carbon;
@@ -21,11 +22,11 @@ class InnerController extends Controller
 
     public function create()
     {
-        $stocks = Brand::all();
+        $brands = Brand::all();
         $BrandTypes = BrandType::all();
         $sizes = Size::all();
         return view('pages.frontend.stock.inner.create', [
-            'stocks' => $stocks,
+            'brands' => $brands,
             'BrandTypes' => $BrandTypes,
             'sizes' => $sizes,
         ]);
@@ -47,7 +48,17 @@ class InnerController extends Controller
             $params['user_id'] = auth()->id();
             $params['stock_type'] = 'INNER';
             $params['stock_left'] = $params['stock_total'];
-            Stock::create($params);
+            $stock = Stock::create($params);
+
+            $title = Auth::user()->name . ' telah menambahkan stok ' . $stock->stock_type . $stock->stock_total;
+            $description = Auth::user()->name . ' telah menambahkan stok ' . $stock->stock_type . $stock->stock_total;
+            $log = new LogActivity();
+            $log->user_id = Auth::user()->id;
+            $log->source_id = $stock->id;
+            $log->source_type = '\App\Stock';
+            $log->title = $title;
+            $log->description = $description;
+            $log->save();
 
 
             DB::commit();

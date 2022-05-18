@@ -34,7 +34,8 @@
                             <div class="text-red px-2 font-40px font-weight-bold border border-danger">51.000 Kg</div>
                         </div>
                     </div>
-                    <p class="text-red text-card-top d-sm-inline-block" style="line-height: 150%">Jumlah stok otomatis akan berkurang setelah selesai laporan jumlah Stuffing
+                    <p class="text-red text-card-top d-sm-inline-block" style="line-height: 150%">Jumlah stok otomatis akan
+                        berkurang setelah selesai laporan jumlah Stuffing
                     </p>
                 </div>
             </div>
@@ -49,7 +50,7 @@
                         <div class="d-flex justify-content-center">
                             <i class="fas fa-archive fa-2x text-white"></i>
                         </div>
-                        <div class="font-weight-bold text-white text-center">711.000</div>
+                        <div class="font-weight-bold text-white text-center">{{ $total_inner }}</div>
                     </div>
                 </div>
                 <p class="text-center font-xs lh-15">Inner Box</p>
@@ -60,7 +61,7 @@
                         <div class="d-flex justify-content-center">
                             <i class="fas fa-cube fa-2x text-white"></i>
                         </div>
-                        <div class="font-weight-bold text-white text-center">511.000</div>
+                        <div class="font-weight-bold text-white text-center">{{ $total_master }}</div>
                     </div>
                 </div>
                 <p class="text-center font-xs lh-15">Master Carton</p>
@@ -73,7 +74,7 @@
                         </div>
                         <div class="font-weight-bold text-white text-center">51.000 Kg</div>
                         {{-- <img src="{{ asset('images/icon/catatan.png') }}" width="30" height="30"> --}}
-                        {{-- <i class="fas fa-list-ul fa-2x text-white"></i>  --}}
+                        {{-- <i class="fas fa-list-ul fa-2x text-white"></i> --}}
                     </div>
                 </div>
                 <p class="text-center font-xs lh-15">Barang Jadi</p>
@@ -84,8 +85,8 @@
                         <div class="d-flex justify-content-center">
                             <i class="fas fa-archive fa-2x text-white"></i>
                         </div>
-                        <div class="font-weight-bold text-white text-center">951.000</div>
-                        {{-- <i class="fas fa-user-md fa-2x text-white"></i>  --}}
+                        <div class="font-weight-bold text-white text-center">{{ $total_plastic }}</div>
+                        {{-- <i class="fas fa-user-md fa-2x text-white"></i> --}}
                     </div>
                 </div>
                 <p class="text-center font-xs lh-15">Plastik</p>
@@ -94,45 +95,22 @@
 
         <h4 class="font-weight-bold font-20 mt-4">Aktivitas Terbaru</h4>
 
-        <hr>
-        <div class="d-flex">
-            {{-- <div class="mr-19 h-94 w-94 d-inline-block">
+        @foreach ($log as $item)
+            <hr>
+            <div class="d-flex">
+                {{-- <div class="mr-19 h-94 w-94 d-inline-block">
                 <img src="https://omyraglobal.com/public/uploads/galleries/1643357598jweyy9.jpg" class="rounded-4" width="94" height="94">
             </div> --}}
-            <div class="w-251 d-inline-block">
-                <div class="text-pink d-inline-block">(Nama User)</div>
-                <div class="font-weight-500 line-height-23 font-18px d-inline-block">
-                     menghapus laporan #424 Briket 25 ton
+                <div class="w-251 d-inline-block">
+                    <div class="text-pink d-inline-block">{{ $item->user->name }}</div>
+                    <div class="font-weight-500 line-height-23 font-18px d-inline-block">
+                        {{ $item->description }}
+                    </div>
+                    <div class="d-inline-block font-14" style="color: #BBBBBB">{{ $item->created_at }}</div>
                 </div>
-                <div class="d-inline-block font-14" style="color: #BBBBBB">13-04-2022 10:00</div>
             </div>
-        </div>
-        <hr>
-        <div class="d-flex">
-            {{-- <div class="mr-19 h-94 w-94 d-inline-block">
-                <img src="https://omyraglobal.com/public/uploads/galleries/1643874479kawkel.jpg" class="rounded-4" width="94" height="94">
-            </div> --}}
-            <div class="w-251 d-inline-block">
-                <div class="text-pink d-inline-block">(Nama User)</div>
-                <div class="font-weight-500 line-height-23 font-18px d-inline-block">
-                     Menambahkan Data Stok Inner Box
-                </div>
-                <div class="d-inline-block font-14" style="color: #BBBBBB">13-04-2022 10:00</div>
-            </div>
-        </div>
-        <hr>
-        <div class="d-flex">
-            {{-- <div class="mr-19 h-94 w-94 d-inline-block">
-                <img src="https://omyraglobal.com/public/uploads/galleries/1643874479qj69ib.jpg" class="rounded-4" width="94" height="94">
-            </div> --}}
-            <div class="w-251 d-inline-block">
-                <div class="text-pink d-inline-block">(Nama User)</div>
-                <div class="font-weight-500 line-height-23 font-18px d-inline-block">
-                     mengubah data stok inner box 200 dengan ID #324
-                </div>
-                <div class="d-inline-block font-14" style="color: #BBBBBB">13-04-2022 10:00</div>
-            </div>
-        </div>
+        @endforeach
+
 
     </div>
 @endsection

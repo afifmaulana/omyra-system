@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Frontend\Stock;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\BrandType;
+use App\Models\LogActivity;
 use App\Models\Size;
 use App\Models\Stock;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PlasticController extends Controller
@@ -46,7 +48,17 @@ class PlasticController extends Controller
             $params['user_id'] = auth()->id();
             $params['stock_type'] = 'PLASTIC';
             $params['stock_left'] = $params['stock_total'];
-            Stock::create($params);
+            $stock = Stock::create($params);
+
+            $title = Auth::user()->name . ' telah menambahkan stok ' . $stock->stock_type . $stock->stock_total;
+            $description = Auth::user()->name . ' telah menambahkan stok ' . $stock->stock_type . $stock->stock_total;
+            $log = new LogActivity();
+            $log->user_id = Auth::user()->id;
+            $log->source_id = $stock->id;
+            $log->source_type = '\App\Stock';
+            $log->title = $title;
+            $log->description = $description;
+            $log->save();
 
 
             DB::commit();
