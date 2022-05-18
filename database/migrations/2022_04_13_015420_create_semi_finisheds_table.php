@@ -22,7 +22,7 @@ class CreateSemiFinishedsTable extends Migration
             $table->string('date')->nullable();
             $table->string('oven_date')->nullable();
             $table->string('total')->nullable();
-            $table->string('stok_left')->nullable();
+            $table->string('stock_left')->nullable();
             $table->timestamps();
         });
     }

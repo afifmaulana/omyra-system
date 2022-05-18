@@ -21,6 +21,7 @@ class CreateFinishedsTable extends Migration
             $table->foreignId('brand_size_id')->unsigned();
             $table->string('date')->nullable();
             $table->string('total')->nullable();
+            $table->string('stock_left')->nullable();
             $table->timestamps();
         });
     }

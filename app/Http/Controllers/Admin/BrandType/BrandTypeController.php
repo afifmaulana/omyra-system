@@ -43,15 +43,15 @@ class BrandTypeController extends Controller
         // dd($request->all());
         $this->validate($request, [
             'brand_type' => 'required|string',
-            'brand' => 'required|string',
+            'brand_id' => 'required',
             'box_type' => 'required|string',
         ]);
         // $params = $request->all();
         $brandType = new BrandType();
         $brandType->brand_type = $request->brand_type;
-        $brandType->brand = $request->brand;
+        $brandType->brand_id = $request->brand_id;
         $brandType->box_type = $request->box_type;
-        $brandType->save;
+        $brandType->save();
         return redirect()->route('admin.brand-type.index')->with('success', 'Berhasil menambahkan Jenis Brand baru!');
     }
     /**
@@ -79,7 +79,7 @@ class BrandTypeController extends Controller
     {
         $this->validate($request, [
             'brand_type' => 'required|string',
-            'brand' => 'required|string',
+            'brand_id' => 'required',
             'box_type' => 'required|string',
         ]);
 
@@ -88,6 +88,8 @@ class BrandTypeController extends Controller
 
         $brandType->update([
             'brand_type' => $params['brand_type'] ?? $brandType->brand_type,
+            'brand_id' => $params['brand_id'] ?? $brandType->brand_id,
+            'box_type' => $params['box_type'] ?? $brandType->box_type,
         ]);
         return redirect()->route('admin.brand-type.index')->with('success', 'Berhasil mengubah Jenis Brand!');
     }
@@ -129,6 +131,8 @@ class BrandTypeController extends Controller
         foreach ($brandTypes->get() as $key => $row) {
             $item["id"] = $row->id;
             $item["brand_type"] = $row->brand_type;
+            $item["brand_id"] = $row->brand->brand_name;
+            $item["box_type"] = $row->box_type;
 
             $item['action'] = '<a href="' . route('admin.brand-type.edit', $row->id) . '" class="btn btn-sm btn-info mr-2" data-toggle="edit"><i class="fa fa-edit"></i></a>';
             $item['action'] .= '<a href="#"  data-id="'.$row['id'].'" rel="noreferrer"class="btn btn-delete btn-sm btn-danger" title="Delete" data-toggle="tooltip" data-placement="top"><i class="fa fa-trash"></i></a>';

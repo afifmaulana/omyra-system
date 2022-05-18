@@ -41,7 +41,6 @@
                     <select id="input-brand-id"
                     class="select2 form-control font-size-16 form-omyra {{ $errors->has('brand_id') ? 'is-invalid' : '' }}" name="brand_id">
                         <option selected disabled>Pilih Brand</option>
-                        {{-- <optgroup label="Test"> --}}
                         @foreach ($brands as $item)
                             <option value="{{ $item->id }}">{{ $item->brand_name }}</option>
                         @endforeach

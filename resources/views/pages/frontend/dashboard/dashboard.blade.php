@@ -1,4 +1,25 @@
 @extends('layouts.frontend.app')
+@push('css')
+<style>
+    .pagination {
+      display: inline-block;
+    }
+
+    .pagination a {
+      color: black;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+
+    .pagination a.active {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .pagination a:hover:not(.active) {background-color: #ddd;}
+    </style>
+@endpush
 @section('content')
     <div class="home-card mb-37">
         <div class="buble buble1"></div>

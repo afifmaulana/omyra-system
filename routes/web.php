@@ -61,11 +61,17 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
 
     //Semi-Finished Briquette
     Route::get('/briquette/semi-finished', [SemiFinishedController::class, 'index'])->name('semi-finished.index');
+    Route::post('/briquette/semi-finished', [SemiFinishedController::class, 'datatables'])->name('semi-finished.datatables');
     Route::get('/briquette/semi-finished/create', [SemiFinishedController::class, 'create'])->name('semi-finished.create');
+    Route::post('/briquette/semi-finished/create', [SemiFinishedController::class, 'store'])->name('semi-finished.store');
+    Route::get('/briquette/semi-finished/delete/{id}', [SemiFinishedController::class, 'destroy'])->name('semi-finished.delete');
 
     //Finished Briquette
     Route::get('/briquette/finished', [FinishedController::class, 'index'])->name('finished.index');
+    Route::post('/briquette/finished', [FinishedController::class, 'datatables'])->name('finished.datatables');
     Route::get('/briquette/finished/create', [FinishedController::class, 'create'])->name('finished.create');
+    Route::post('/briquette/finished/create', [FinishedController::class, 'store'])->name('finished.store');
+    Route::get('/briquette/finished/delete/{id}', [FinishedController::class, 'destroy'])->name('finished.delete');
 
     //Profile User
     Route::get('/profile', [FrontendProfileController::class, 'index'])->name('profile.index');

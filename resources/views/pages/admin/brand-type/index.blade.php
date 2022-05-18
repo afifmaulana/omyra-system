@@ -36,6 +36,8 @@
                                         <tr class="text-center">
                                             <th style="width: 20px">No</th>
                                             <th>Jenis Brand</th>
+                                            <th>Brand</th>
+                                            <th>Jenis Box</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -50,7 +52,7 @@
 
         </div>
         <!-- /page content -->
-        
+
     @endsection
 
     @push('scripts')
@@ -69,6 +71,14 @@
                     {
                         data: 'brand_type',
                         name: 'brand_type'
+                    },
+                    {
+                        data: 'brand_id',
+                        name: 'brand_id'
+                    },
+                    {
+                        data: 'box_type',
+                        name: 'box_type'
                     },
                     // { data: 'deleted', name: 'deleted' },
                     {
@@ -100,6 +110,8 @@
                             d._token = "{{ csrf_token() }}"
                             d.id = $('input[name=brand_type_id]').val()
                             d.brand_type = $('input[name=brand_type]').val()
+                            d.brand_id = $('input[name=brand_id]').val()
+                            d.box_type = $('input[name=box_type]').val()
                         }
                     },
                     columns: rowData
