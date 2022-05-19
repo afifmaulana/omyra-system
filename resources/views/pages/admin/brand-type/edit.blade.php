@@ -35,6 +35,47 @@
                                         </div>
                                     </div>
 
+                                    <div class="item form-group">
+                                        <label class="col-md-12 col-sm-12 col-xs-12" for="Brand">Brand<span
+                                                class="required">*</span>
+                                        </label>
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <select class="form-control {{ $errors->has('brand_id') ? 'is-invalid' : '' }}"
+                                                name="brand_id" type="hidden" required="required">
+                                                <option value="" selected disabled>---- Pilih Brand ----</option>
+                                                @foreach($brand as $item)
+                                                    <option value="{{$item->id}}"@if($item->id == $brandType->brand_id){{"selected"}}@endif>{{$item->brand_name}}</option>
+                                                @endforeach
+                                                @if ($errors->has('brand_id'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <p><b>{{ $errors->first('brand_id') }}</b></p>
+                                                    </span>
+                                                @endif
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="item form-group">
+                                        <label class="col-md-12 col-sm-12 col-xs-12" for="Brand">Jenis Box<span
+                                                class="required">*</span>
+                                        </label>
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <select class="form-control {{ $errors->has('box_type') ? 'is-invalid' : '' }}"
+                                                name="box_type" type="hidden" required="required">
+                                                <option value="" selected disabled>---- Pilih Jenis Box ----</option>
+                                                <option value="INNER" {{ $brandType->box_type == 'INNER' ? 'selected' : '' }}> INNER </option>
+                                                <option value="MASTER" {{ $brandType->box_type == 'MASTER' ? 'selected' : '' }}> MASTER </option>
+                                                <option value="PLASTIC" {{ $brandType->box_type == 'PLASTIC' ? 'selected' : '' }}> PLASTIC </option>
+                                            </select>
+                                            @if ($errors->has('box_type'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <p><b>{{ $errors->first('box_type') }}</b></p>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
                                     <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <div class="col-md-12">

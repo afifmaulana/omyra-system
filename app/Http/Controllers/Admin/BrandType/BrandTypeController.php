@@ -63,8 +63,10 @@ class BrandTypeController extends Controller
     public function edit($id)
     {
         $brandType = BrandType::where('id', $id)->first();
+        $brand = Brand::all();
         return view('pages.admin.brand-type.edit', [
-            'brandType' => $brandType
+            'brandType' => $brandType,
+            'brand' => $brand,
         ]);
     }
 
