@@ -108,8 +108,6 @@ class SizeController extends Controller
         $draw = $request->input('draw');
         $sizes = Size::select('*');
 
-        $sizes = $this->filterDatatables($request, $sizes);
-
         $total = $sizes->count();
         $sizes->take($limit)->skip($offset);
         $output = [];
@@ -127,18 +125,6 @@ class SizeController extends Controller
         $output['draw'] = $draw;
         $output['recordsTotal'] = $output['recordsFiltered'] = $total;
         return json_encode($output);
-    }
-
-    private function filterDatatables($request, $sizes)
-    {
-        if ($request->id) {
-            $sizes->where('sizes.id', 'like', '%' . $request->id . '%');
-        }
-        if ($request->brand_size) {
-            $sizes->where('brand_size', 'like', '%' . $request->brand_size . '%');
-        }
-
-        return $sizes;
     }
 
 }

@@ -20,7 +20,7 @@
             <i class="fa fa-cubes h-40 p-0 m-0"></i>
             <p class="font-xs text-light-pink p-0 m-0">Barang<br> Jadi</p>
         </a>
-        <a class="text-center py-2 m-0" href="{{ route('frontend.profile.index') }}">
+        <a class="text-center py-2 m-0" href="{{ route('frontend.profile.edit') }}">
             {{-- <img src="{{ asset('images/icon/profil.png') }}" alt=""> --}}
             <i class="fa fa-user h-40 p-0 m-0"></i>
             <p class="font-xs text-light-pink p-0 m-0">Akun</p>

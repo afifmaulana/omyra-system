@@ -43,7 +43,7 @@
             </div>
             <div class="text-white mb-34" style="position: relative;">
                 <div>Halo ibu,</div>
-                <h4 class="d-block font-weight-bold">Sumi Sumiyati</h4>
+                <h4 class="d-block font-weight-bold">{{ Auth::user()->name }}</h4>
             </div>
 
 

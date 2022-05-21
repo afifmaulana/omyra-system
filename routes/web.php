@@ -43,6 +43,8 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::post('/stock/inner', [InnerController::class, 'datatables'])->name('inner.datatables');
     Route::get('/stock/inner/create', [InnerController::class, 'create'])->name('inner.create');
     Route::post('/stock/inner/create', [InnerController::class, 'store'])->name('inner.store');
+    Route::get('/stock/inner/edit/{id}', [InnerController::class, 'edit'])->name('inner.edit');
+    Route::put('/stock/inner/edit/{id}', [InnerController::class, 'update'])->name('inner.update');
     Route::get('/stock/inner/delete/{id}', [InnerController::class, 'destroy'])->name('inner.delete');
 
     //Master
@@ -74,7 +76,8 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::get('/briquette/finished/delete/{id}', [FinishedController::class, 'destroy'])->name('finished.delete');
 
     //Profile User
-    Route::get('/profile', [FrontendProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile', [FrontendProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [FrontendProfileController::class, 'update'])->name('profile.update');
 });
 
     Route::get('/login-admin', [LoginController::class, 'showLoginForm'])->name('login');

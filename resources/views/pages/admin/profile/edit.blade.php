@@ -58,10 +58,10 @@
                                             class="required">*</span>
                                     </label>
                                     <div class="col-md-12 col-sm-12 col-xs-12">
-                                        <select class="form-control @error('role') is-invalid @enderror" name="role" type="hidden" required="required">
+                                        <select class="form-control {{ $errors->has('role') ? 'is-invalid' : '' }}" name="role" type="hidden" required="required">
                                             <option value="" selected disabled>---- Pilih Jabatan ----</option>
                                             <option value="0" {{ $data->role == '0' ? 'selected' : '' }}>Admin</option>
-                                            
+
                                         </select>
                                         @error('role')
                                             <div class="invalid-feedback">{{ $message }}</div>

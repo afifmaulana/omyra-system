@@ -108,7 +108,6 @@ class BrandController extends Controller
         $draw = $request->input('draw');
         $brands = Brand::select('*');
 
-        $brands = $this->filterDatatables($request, $brands);
 
         $total = $brands->count();
         $brands->take($limit)->skip($offset);
@@ -127,18 +126,6 @@ class BrandController extends Controller
         $output['draw'] = $draw;
         $output['recordsTotal'] = $output['recordsFiltered'] = $total;
         return json_encode($output);
-    }
-
-    private function filterDatatables($request, $brands)
-    {
-        if ($request->id) {
-            $brands->where('brands.id', 'like', '%' . $request->id . '%');
-        }
-        if ($request->brand_name) {
-            $brands->where('brand_name', 'like', '%' . $request->brand_name . '%');
-        }
-
-        return $brands;
     }
 
 }

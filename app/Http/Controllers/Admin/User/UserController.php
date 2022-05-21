@@ -122,8 +122,6 @@ class UserController extends Controller
         $draw = $request->input('draw');
         $users = User::select('*');
 
-        $users = $this->filterDatatables($request, $users);
-
         $total = $users->count();
         $users->take($limit)->skip($offset);
         $output = [];
@@ -143,23 +141,6 @@ class UserController extends Controller
         $output['draw'] = $draw;
         $output['recordsTotal'] = $output['recordsFiltered'] = $total;
         return json_encode($output);
-    }
-
-    private function filterDatatables($request, $users)
-    {
-        if ($request->id) {
-            $users->where('users.id', 'like', '%' . $request->id . '%');
-        }
-        if ($request->name) {
-            $users->where('name', 'like', '%' . $request->name . '%');
-        }
-        if ($request->email) {
-            $users->where('email', 'like', '%' . $request->email . '%');
-        }
-        if ($request->role) {
-            $users->where('role', 'like', '%' . $request->role . '%');
-        }
-        return $users;
     }
 
     private function stylingTypeUser($users)

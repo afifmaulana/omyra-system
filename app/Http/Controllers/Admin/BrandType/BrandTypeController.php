@@ -123,8 +123,6 @@ class BrandTypeController extends Controller
         $draw = $request->input('draw');
         $brandTypes = BrandType::select('*');
 
-        $brandTypes = $this->filterDatatables($request, $brandTypes);
-
         $total = $brandTypes->count();
         $brandTypes->take($limit)->skip($offset);
         $output = [];
@@ -146,16 +144,5 @@ class BrandTypeController extends Controller
         return json_encode($output);
     }
 
-    private function filterDatatables($request, $brandTypes)
-    {
-        if ($request->id) {
-            $brandTypes->where('brands.id', 'like', '%' . $request->id . '%');
-        }
-        if ($request->brand_type) {
-            $brandTypes->where('brand_type', 'like', '%' . $request->brand_type . '%');
-        }
-
-        return $brandTypes;
-    }
 
 }
