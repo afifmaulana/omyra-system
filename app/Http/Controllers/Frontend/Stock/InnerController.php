@@ -44,7 +44,7 @@ class InnerController extends Controller
         ]);
         DB::beginTransaction();
         try{
-            $params['date'] = Carbon::parse($params['date'])->now()->format('Y-m-d');
+            $params['date'] = Carbon::parse($params['date'])->format('Y-m-d');
             $params['user_id'] = auth()->id();
             $params['stock_type'] = 'INNER';
             $params['stock_left'] = $params['stock_total'];
@@ -73,12 +73,10 @@ class InnerController extends Controller
     public function edit($id)
     {
         $stock = Stock::where('id', $id)->first();
-        $brandType = BrandType::all();
         $brand = Brand::all();
         $sizes = Size::all();
         return view('pages.frontend.stock.inner.edit', [
             'stock' => $stock,
-            'brandType' => $brandType,
             'brand' => $brand,
             'sizes' => $sizes,
         ]);
@@ -106,7 +104,6 @@ class InnerController extends Controller
         $params['user_id'] = auth()->id();
         $params['stock_type'] = 'INNER';
         $params['stock_left'] = $params['stock_total'];
-        $params = $request->all();
 
         $stock->update([
             'date' => $params['date'] ?? $stock->date,
@@ -115,7 +112,17 @@ class InnerController extends Controller
             'brand_size_id' => $params['brand_size_id'] ?? $stock->brand_size_id,
             'stock_total' => $params['stock_total'] ?? $stock->stock_total,
         ]);
+        $title = Auth::user()->name . ' telah mengubah stok INNER ' ;
+            $description = Auth::user()->name . ' telah mengubah stok INNER ' ;
+            $log = new LogActivity();
+            $log->user_id = Auth::user()->id;
+            $log->source_id = $stock->id;
+            $log->source_type = '\App\Stock';
+            $log->title = $title;
+            $log->description = $description;
+            $log->save();
         return redirect()->route('frontend.inner.index')->with('success', 'Berhasil mengubah Jenis Brand!');
+
     }
 
     public function destroy($id)

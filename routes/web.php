@@ -52,6 +52,8 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::post('/stock/master', [MasterController::class, 'datatables'])->name('master.datatables');
     Route::get('/stock/master/create', [MasterController::class, 'create'])->name('master.create');
     Route::post('/stock/master/create', [MasterController::class, 'store'])->name('master.store');
+    Route::get('/stock/master/edit/{id}', [MasterController::class, 'edit'])->name('master.edit');
+    Route::put('/stock/master/edit/{id}', [MasterController::class, 'update'])->name('master.update');
     Route::get('/stock/master/delete/{id}', [MasterController::class, 'destroy'])->name('master.delete');
 
     //Plastic
@@ -59,6 +61,8 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::post('/stock/plastic', [PlasticController::class, 'datatables'])->name('plastic.datatables');
     Route::get('/stock/plastic/create', [PlasticController::class, 'create'])->name('plastic.create');
     Route::post('/stock/plastic/create', [PlasticController::class, 'store'])->name('plastic.store');
+    Route::get('/stock/plastic/edit/{id}', [PlasticController::class, 'edit'])->name('plastic.edit');
+    Route::put('/stock/plastic/edit/{id}', [PlasticController::class, 'update'])->name('plastic.update');
     Route::get('/stock/plastic/delete/{id}', [PlasticController::class, 'destroy'])->name('plastic.delete');
 
     //Semi-Finished Briquette
