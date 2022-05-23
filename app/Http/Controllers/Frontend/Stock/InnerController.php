@@ -43,7 +43,7 @@ class InnerController extends Controller
             'stock_total' => 'required',
         ]);
         DB::beginTransaction();
-        try{
+        try {
             $params['date'] = Carbon::parse($params['date'])->format('Y-m-d');
             $params['user_id'] = auth()->id();
             $params['stock_type'] = 'INNER';
@@ -75,10 +75,13 @@ class InnerController extends Controller
         $stock = Stock::where('id', $id)->first();
         $brand = Brand::all();
         $sizes = Size::all();
+        $brandTypes = BrandType::all();
+        // dd($brandTypes);
         return view('pages.frontend.stock.inner.edit', [
             'stock' => $stock,
             'brand' => $brand,
             'sizes' => $sizes,
+            'brandTypes' => $brandTypes,
         ]);
     }
 
@@ -112,17 +115,16 @@ class InnerController extends Controller
             'brand_size_id' => $params['brand_size_id'] ?? $stock->brand_size_id,
             'stock_total' => $params['stock_total'] ?? $stock->stock_total,
         ]);
-        $title = Auth::user()->name . ' telah mengubah stok INNER ' ;
-            $description = Auth::user()->name . ' telah mengubah stok INNER ' ;
-            $log = new LogActivity();
-            $log->user_id = Auth::user()->id;
-            $log->source_id = $stock->id;
-            $log->source_type = '\App\Stock';
-            $log->title = $title;
-            $log->description = $description;
-            $log->save();
+        $title = Auth::user()->name . ' telah mengubah stok INNER ';
+        $description = Auth::user()->name . ' telah mengubah stok INNER ';
+        $log = new LogActivity();
+        $log->user_id = Auth::user()->id;
+        $log->source_id = $stock->id;
+        $log->source_type = '\App\Stock';
+        $log->title = $title;
+        $log->description = $description;
+        $log->save();
         return redirect()->route('frontend.inner.index')->with('success', 'Berhasil mengubah Jenis Brand!');
-
     }
 
     public function destroy($id)
@@ -157,7 +159,7 @@ class InnerController extends Controller
             $item["stock_total"] = $row->stock_total;
 
             $item['action'] = '<a href="' . route('frontend.inner.edit', $row->id) . '" class="btn btn-sm btn-info mr-2" data-toggle="edit"><i class="fa fa-edit"></i></a>';
-            $item['action'] .= '<a href="#"  data-id="'.$row['id'].'" rel="noreferrer"class="btn btn-delete btn-sm btn-danger" title="Delete" data-toggle="tooltip" data-placement="top"><i class="fa fa-trash"></i></a>';
+            $item['action'] .= '<a href="#"  data-id="' . $row['id'] . '" rel="noreferrer"class="btn btn-delete btn-sm btn-danger" title="Delete" data-toggle="tooltip" data-placement="top"><i class="fa fa-trash"></i></a>';
             $data[] = $item;
         }
         $output['data'] = $data;
