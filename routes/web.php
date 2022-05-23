@@ -29,9 +29,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/login-frontend', [LoginFrontendController::class, 'showLoginForm'])->name('login.frontend');
-Route::post('/login-frontend/submit', [LoginFrontendController::class, 'login'])->name('login.frontend.submit');
-Route::get('/login-frontend/logout', [LoginFrontendController::class, 'logout'])->name('logout.frontend');
+
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login/submit', [LoginController::class, 'login'])->name('login.submit');
+    Route::get('/login/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::get('/', [FrontendDashboardController::class, 'index'])->name('dashboard.index');
@@ -83,10 +84,6 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::get('/profile', [FrontendProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [FrontendProfileController::class, 'update'])->name('profile.update');
 });
-
-    Route::get('/login-admin', [LoginController::class, 'showLoginForm'])->name('login');
-    Route::post('/login-submit', [LoginController::class, 'login'])->name('login.submit');
-    Route::get('/login-admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin'], 'as' => 'admin.'], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');

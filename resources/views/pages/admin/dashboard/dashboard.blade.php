@@ -6,11 +6,11 @@
         <div class="row tile_count">
             <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
                 <span class="count_top"><i class="fa fa-user"></i> Brand</span>
-                <div class="count">12</div>
+                <div class="count">{{ $brand }}</div>
             </div>
             <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
                 <span class="count_top"><i class="fa fa-clock-o"></i> Jenis Brand</span>
-                <div class="count">12</div>
+                <div class="count">{{ $brandType }}</div>
             </div>
             <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
                 <span class="count_top"><i class="fa fa-clock-o"></i> Data Ukuran</span>

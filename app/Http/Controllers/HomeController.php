@@ -30,7 +30,7 @@ class HomeController extends Controller
         }else if($user->role == 1){
             return redirect()->route('frontend.dashboard.index');
         }else{
-            return redirect()->route('frontend.dashboard.index');
+            return redirect()->route('frontend.inner.index');
         }
     }
 }

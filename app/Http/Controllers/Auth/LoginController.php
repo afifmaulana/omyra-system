@@ -43,7 +43,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('auth.login');
+        return view('auth.frontend.login');
     }
 
     public function login(Request $request)
@@ -65,36 +65,33 @@ class LoginController extends Controller
             'password' => $request->password,
         ];
 
-        if (Auth::attempt($credential, $request->remember)) {
-            return redirect()->intended(route('admin.dashboard.index'));
-        }
-
-        return redirect()->back()->withInput($request->only('email', 'remember'))
-            ->withErrors([
-                'failed' => 'Email/Password yang Anda masukan salah',
-            ]);
-
-        // if (Auth::attempt($credential, true)){
-        //     $user = Auth::user();
-        //     if (!$user->deleted_at) {
-        //         if ($user->role == 0){
-        //             return redirect()->intended(route('admin.dashboard.index'));
-        //         }else if ($user->role == 1){
-        //             return redirect()->intended(route('admin.brand-type.index'));
-        //         }else{
-        //             return redirect()->intended(route('admin.brand.index'));
-        //         }
-        //     }else{
-        //         $errors = new MessageBag(['email' => 'your account has been deleted']);
-        //         return redirect()->back()->withInput($request->only('email'))
-        //         ->withErrors($errors);
-        //     }
-
+        // if (Auth::attempt($credential, $request->remember)) {
+        //     return redirect()->intended(route('admin.dashboard.index'));
         // }
 
-        // $errors = new MessageBag(['email' => 'enter the correct email and password']);
-        //         return redirect()->back()->withInput($request->only('email'))
-        //         ->withErrors($errors);
+        // return redirect()->back()->withInput($request->only('email', 'remember'))
+        //     ->withErrors([
+        //         'failed' => 'Email/Password yang Anda masukan salah',
+        //     ]);
+
+        if (Auth::attempt($credential, true)){
+            $user = Auth::user();
+            if (!$user->deleted_at) {
+                if ($user->role == 0){
+                    return redirect()->intended(route('admin.dashboard.index'));
+                }else if ($user->role == 1){
+                    return redirect()->intended(route('frontend.dashboard.index'));
+                }else{
+                    return redirect()->intended(route('frontend.stock.index'));
+                }
+            }else{
+                $errors = new MessageBag(['email' => 'Akun Anda telah dihapus']);
+                return redirect()->back()->withInput($request->only('email'))
+                ->withErrors($errors);
+            }
+
+        }
+
     }
 
     public function logout()

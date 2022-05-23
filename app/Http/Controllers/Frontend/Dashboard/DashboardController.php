@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
     public function index()
     {
         $total_inner = Stock::where('stock_type', 'INNER')->sum('stock_total');

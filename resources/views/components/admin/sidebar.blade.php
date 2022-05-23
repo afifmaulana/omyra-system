@@ -62,7 +62,7 @@
                 title="Update Profile">
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
             </a>
-            <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{ route('admin.logout') }}">
+            <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{ route('logout') }}">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
             </a>
         </div>

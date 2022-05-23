@@ -68,7 +68,7 @@
                     </select>
                 </div>
                 <button class="btn btn-block btn-omyra btn-pink text-white mt-3" type="submit">Simpan Perubahan</button>
-                <a class="btn btn-outline-secondary btn-block" href="{{ route('logout.frontend') }}">Keluar</a>
+                <a class="btn btn-outline-secondary btn-block" href="{{ route('logout') }}">Keluar</a>
             </form>
         </div>
     </div>
