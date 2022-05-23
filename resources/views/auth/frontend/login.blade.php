@@ -77,7 +77,7 @@
                 </div>
             </div>
 
-            {{-- <div class="d-block d-md-none">
+            <div class="d-block d-md-none">
                 <form action="{{ route('login.submit') }}" method="POST" class="mb-4">
                     @csrf
                     <div class="form-group">
@@ -109,7 +109,7 @@
                     </div>
                     <button class="btn btn-omyra btn-pink text-white btn-block" type="submit">Masuk Sekarang</button>
                 </form>
-            </div> --}}
+            </div>
 
         </div>
     </div>
