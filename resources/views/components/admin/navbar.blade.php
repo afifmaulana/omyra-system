@@ -26,22 +26,21 @@
                         <span class="badge bg-green">5</span>
                     </a>
                     <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
-                        @foreach ($log as $item)
-                            <li class="nav-item">
-                                <a class="dropdown-item">
-                                    <span class="image"><img
-                                            src="{{ asset('assets-admin/build/images/avatar.png') }}"
-                                            alt="Profile Image" /></span>
-                                    <span>
-                                        <span>{{ $item->user->name }}</span>
-                                        <span class="time">{{ $item->created_at }}</span>
-                                    </span>
-                                    <span class="message">
-                                        {{ $item->description }}
-                                    </span>
-                                </a>
-                            </li>
-                        @endforeach
+                        {{-- @foreach ($log as $item)
+                        <li class="nav-item">
+                            <a class="dropdown-item">
+                                <span class="image"><img src="{{ asset('assets-admin/build/images/avatar.png') }}"
+                                        alt="Profile Image" /></span>
+                                <span>
+                                    <span>{{ $item->user->name }}</span>
+                                    <span class="time">{{ $item->created_at }}</span>
+                                </span>
+                                <span class="message">
+                                    {{ $item->description }}
+                                </span>
+                            </a>
+                        </li>
+                        @endforeach --}}
                     </ul>
                 </li>
             </ul>

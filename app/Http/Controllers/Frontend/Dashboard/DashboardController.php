@@ -19,7 +19,9 @@ class DashboardController extends Controller
         $total_master = Stock::where('stock_type', 'MASTER')->sum('stock_total');
         $total_plastic = Stock::where('stock_type', 'PLASTIC')->sum('stock_total');
         $log = LogActivity::orderBy('id', 'DESC')->paginate('5');
-        return view('pages.frontend.dashboard.dashboard',[
+
+
+        return view('pages.frontend.dashboard.dashboard', [
             'log' => $log,
             'total_inner' => $total_inner,
             'total_master' => $total_master,
