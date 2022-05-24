@@ -29,4 +29,13 @@ class Stock extends Model
     {
         return $this->belongsTo(Size::class, 'brand_size_id', 'id');
     }
+
+    public function getStock()
+    {
+        $brandTypeId = $this->brand_type_id;
+        $stockSemiFinished = SemiFinished::where('brand_type_id', $brandTypeId)->sum('total');
+        $stockFinished = Finished::where('brand_type_id', $brandTypeId)->sum('total');
+        $realStock = Stock::where('brand_type_id', $brandTypeId)->sum('stock_total');
+        return $realStock - $stockSemiFinished - $stockFinished;
+    }
 }

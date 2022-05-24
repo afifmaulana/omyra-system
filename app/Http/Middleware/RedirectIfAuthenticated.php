@@ -39,9 +39,6 @@ class RedirectIfAuthenticated
         // }elseif($roleId==2){
         //     return redirect()->route('frontend.dashboard.index');
         // }
-
-
-
         return $next($request);
     }
 }

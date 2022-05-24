@@ -25,11 +25,11 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if($user->role==0){
+        if ($user->role == 0) {
             return redirect()->route('admin.dashboard.index');
-        }else if($user->role == 1){
+        } else if ($user->role == 1) {
             return redirect()->route('frontend.dashboard.index');
-        }else{
+        } else {
             return redirect()->route('frontend.inner.index');
         }
     }

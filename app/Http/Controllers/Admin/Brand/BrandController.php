@@ -119,7 +119,7 @@ class BrandController extends Controller
             $item["brand_name"] = $row->brand_name;
 
             $item['action'] = '<a href="' . route('admin.brand.edit', $row->id) . '" class="btn btn-sm btn-info mr-2" data-toggle="edit"><i class="fa fa-edit"></i></a>';
-            $item['action'] .= '<a href="#"  data-id="'.$row['id'].'" rel="noreferrer"class="btn btn-delete btn-sm btn-danger" title="Delete" data-toggle="tooltip" data-placement="top"><i class="fa fa-trash"></i></a>';
+            $item['action'] .= '<a href="#"  data-id="' . $row['id'] . '" rel="noreferrer"class="btn btn-delete btn-sm btn-danger" title="Delete" data-toggle="tooltip" data-placement="top"><i class="fa fa-trash"></i></a>';
             $data[] = $item;
         }
         $output['data'] = $data;
@@ -127,5 +127,4 @@ class BrandController extends Controller
         $output['recordsTotal'] = $output['recordsFiltered'] = $total;
         return json_encode($output);
     }
-
 }
