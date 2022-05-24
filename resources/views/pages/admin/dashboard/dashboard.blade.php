@@ -14,11 +14,11 @@
             </div>
             <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
                 <span class="count_top"><i class="fa fa-clock-o"></i> Data Ukuran</span>
-                <div class="count">12</div>
+                <div class="count">{{ $brandSize }}</div>
             </div>
             <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
                 <span class="count_top"><i class="fa fa-user"></i> Data User</span>
-                <div class="count green">12</div>
+                <div class="count green">{{ $user }}</div>
             </div>
         </div>
         <!-- /top tiles -->
