@@ -76,10 +76,12 @@ class PlasticController extends Controller
         $stock = Stock::where('id', $id)->first();
         $brand = Brand::all();
         $sizes = Size::all();
+        $brandType = BrandType::all();
         return view('pages.frontend.stock.plastic.edit', [
             'stock' => $stock,
             'brand' => $brand,
             'sizes' => $sizes,
+            'brandType' => $brandType,
         ]);
     }
 
@@ -92,7 +94,7 @@ class PlasticController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $params = $this->validate($request, [
+        $this->validate($request, [
             'date' => 'required',
             'brand_id' => 'required',
             'brand_type_id' => 'required',
@@ -101,20 +103,32 @@ class PlasticController extends Controller
         ]);
 
         $stock = Stock::where('id', $id)->first();
-        $params['date'] = Carbon::parse($params['date'])->format('Y-m-d');
-        $params['user_id'] = auth()->id();
-        $params['stock_type'] = 'PLASTIC';
-        $params['stock_left'] = $params['stock_total'];
-        $params = $request->all();
+        DB::beginTransaction();
+        try {
+            $title = $description = 'Stock Plastic dengan ID #' . $stock->id . ' telah diubah oleh Mas ' . Auth::user()->name;
+            $log = new LogActivity();
+            $log->user_id = Auth::user()->id;
+            $log->source_type = 'App\Stock';
+            $log->source_id = $stock->id;
+            $log->title = $title;
+            $log->description = $description;
+            $log->save();
 
-        $stock->update([
-            'date' => $params['date'] ?? $stock->date,
-            'brand_id' => $params['brand_id'] ?? $stock->brand_id,
-            'brand_type_id' => $params['brand_type_id'] ?? $stock->brand_type_id,
-            'brand_size_id' => $params['brand_size_id'] ?? $stock->brand_size_id,
-            'stock_total' => $params['stock_total'] ?? $stock->stock_total,
-        ]);
-        return redirect()->route('frontend.plastic.index')->with('success', 'Berhasil mengubah Jenis Brand!');
+            $stock->date = Carbon::parse($request->date)->format('Y-m-d');
+            $stock->brand_id = $request->brand_id;
+            $stock->brand_type_id = $request->brand_type_id;
+            $stock->brand_size_id = $request->brand_size_id;
+            $stock->stock_total = $request->stock_total;
+
+            $stock->update();
+
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            dd($th->getMessage());
+        }
+
+        return redirect()->route('frontend.plastic.index')->with('success', 'Berhasil mengubah data');
     }
 
     public function destroy($id)

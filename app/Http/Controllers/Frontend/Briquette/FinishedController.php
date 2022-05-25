@@ -91,7 +91,7 @@ class FinishedController extends Controller
             $item["brand_size_id"] = $row->size->brand_size;
             $item["total"] = $row->total;
 
-            $item['action'] = '<a href="' . route('admin.brand.edit', $row->id) . '" class="btn btn-sm btn-info mr-2" data-toggle="edit"><i class="fa fa-edit"></i></a>';
+            $item['action'] = '<a href="' . route('frontend.finished.edit', $row->id) . '" class="btn btn-sm btn-info mr-2" data-toggle="edit"><i class="fa fa-edit"></i></a>';
             $item['action'] .= '<a href="#"  data-id="'.$row['id'].'" rel="noreferrer"class="btn btn-delete btn-sm btn-danger" title="Delete" data-toggle="tooltip" data-placement="top"><i class="fa fa-trash"></i></a>';
             $data[] = $item;
         }
@@ -99,6 +99,67 @@ class FinishedController extends Controller
         $output['draw'] = $draw;
         $output['recordsTotal'] = $output['recordsFiltered'] = $total;
         return json_encode($output);
+    }
+
+    public function edit($id)
+    {
+        $finished = Finished::where('id', $id)->first();
+        $brand = Brand::all();
+        $sizes = Size::all();
+        $brandTypes = BrandType::all();
+        // dd($brandTypes);
+        return view('pages.frontend.briquette.finished.edit', [
+            'finished' => $finished,
+            'brand' => $brand,
+            'sizes' => $sizes,
+            'brandTypes' => $brandTypes,
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'date' => 'required',
+            'brand_id' => 'required',
+            'brand_type_id' => 'required',
+            'brand_size_id' => 'required',
+            'total' => 'required',
+        ]);
+
+        $finished = Finished::where('id', $id)->first();
+        DB::beginTransaction();
+        try {
+            $title = $description = 'Barang Jadi dengan ID #' . $finished->id . ' telah diubah oleh ' . Auth::user()->name;
+            $log = new LogActivity();
+            $log->user_id = Auth::user()->id;
+            $log->source_type = 'App\Finished';
+            $log->source_id = $finished->id;
+            $log->title = $title;
+            $log->description = $description;
+            $log->save();
+
+            $finished->date = Carbon::parse($request->date)->format('Y-m-d');
+            $finished->brand_id = $request->brand_id;
+            $finished->brand_type_id = $request->brand_type_id;
+            $finished->brand_size_id = $request->brand_size_id;
+            $finished->total = $request->total;
+
+            $finished->update();
+
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            dd($th->getMessage());
+        }
+
+        return redirect()->route('frontend.finished.index')->with('success', 'Berhasil mengubah data');
     }
 
     public function destroy($id)

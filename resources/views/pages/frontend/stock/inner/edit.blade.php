@@ -125,12 +125,12 @@
                 console.log(textStatus, errorThrown);
             }
         });
-        
+
         $( ".datepicker" ).datepicker("setDate", date);
     });
     $('.datepicker').datepicker({
         autoclose: true,
-        format: 'dd/mm/yyyy'
+        format: 'dd-mm-yyyy'
     });
     $(document).on('change', '#input-brand-id', function(e) {
         e.preventDefault()

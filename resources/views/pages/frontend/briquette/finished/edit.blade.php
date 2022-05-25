@@ -11,25 +11,25 @@
 <div class="box-shadow">
     <div class="col-12 shadow shadow-lg">
         <div class="py-3">
-            <a href="{{ route('frontend.plastic.index') }}">
+            <a href="{{ route('frontend.finished.index') }}">
                 <img src="{{ asset('images/icon/back.png') }}" width="18" height="18">
             </a>
         </div>
         <div class="row justify-content-center">
-            <div class="text-header font-size-18 text-active-pink font-weight-500">Form input Plastic Box</div>
+            <div class="text-header font-size-18 text-active-pink font-weight-500">Form Edit Barang Jadi</div>
         </div>
     </div>
 </div>
 <div class="bg-grey pt-23 mt-1" style="max-height: 86vh; overflow: scroll; margin-bottom: 30px">
     <div class="container-omyra">
-        <form action="{{ route('frontend.plastic.update', $stock->id) }}" method="POST">
+        <form action="{{ route('frontend.finished.update', $finished->id) }}" method="POST">
             @csrf
             @method('put')
             <div class="form-group">
                 <label class="font-weight-500">Tanggal</label>
                 <input type="text" name="date" id=""
                     class="datepicker form-control font-size-16 form-omyra {{ $errors->has('date') ? 'is-invalid' : '' }}"
-                    placeholder="Masukkan Tanggal plastic Datang" value="{{ old('date') }}">
+                      value="{{ old('date') }}">
                 @if ($errors->has('date'))
                 <span class="invalid-feedback" role="alert">
                     <p><b>{{ $errors->first('date') }}</b></p>
@@ -44,7 +44,7 @@
                     <option selected disabled>Pilih Brand</option>
                     @foreach ($brand as $item)
                     <option value="{{$item->id}}" @if($item->id ==
-                        $stock->brand_id){{"selected"}}@endif>{{$item->brand_name}}</option>
+                        $finished->brand_id){{"selected"}}@endif>{{$item->brand_name}}</option>
                     @endforeach
                     @if ($errors->has('brand_id'))
                     <span class="invalid-feedback" role="alert">
@@ -68,7 +68,7 @@
                     <option selected disabled>Pilih Ukuran</option>
                     @foreach ($sizes as $item)
                     <option value="{{$item->id}}" @if($item->id ==
-                        $stock->brand_size_id){{"selected"}}@endif>{{$item->brand_size}}</option>
+                        $finished->brand_size_id){{"selected"}}@endif>{{$item->brand_size}}</option>
                     @endforeach
                     @if ($errors->has('brand_size_id'))
                     <span class="invalid-feedback" role="alert">
@@ -79,18 +79,18 @@
                 </select>
             </div>
             <div class="form-group">
-                <label class="font-weight-500">Jumlah Plastic</label>
-                <input type="text" name="stock_total" id=""
-                    class="form-control font-size-16 form-omyra {{ $errors->has('stock_total') ? 'is-invalid' : '' }}"
-                    placeholder="12.000" value="{{ $stock->stock_total ?? old('stock_total') }}">
-                @if ($errors->has('stock_total'))
+                <label class="font-weight-500">Jumlah Barang</label>
+                <input type="text" name="total" id=""
+                    class="form-control font-size-16 form-omyra {{ $errors->has('total') ? 'is-invalid' : '' }}"
+                    value="{{ $finished->total ?? old('total') }}">
+                @if ($errors->has('total'))
                 <span class="invalid-feedback" role="alert">
-                    <p><b>{{ $errors->first('stock_total') }}</b></p>
+                    <p><b>{{ $errors->first('total') }}</b></p>
                 </span>
                 @endif
             </div>
             <button class="btn btn-omyra btn-block btn-pink text-white" type="submit">Simpan</button>
-            <a class="btn btn-outline-secondary btn-block" href="{{ route('frontend.plastic.index') }}">Kembali</a>
+            <a class="btn btn-outline-secondary btn-block" href="{{ route('frontend.finished.index') }}">Kembali</a>
         </form>
     </div>
 </div>
@@ -98,9 +98,9 @@
 @push('scripts')
 <script>
     $(document).ready(function () {
-        let date = @json(Illuminate\Support\Carbon::parse($stock->date)->format("d/m/Y"));
-        let brandId = @json($stock->brand_id);
-        let brandTypeId = @json($stock->brand_type_id);
+        let date = @json(Illuminate\Support\Carbon::parse($finished->date)->format("d/m/Y"));
+        let brandId = @json($finished->brand_id);
+        let brandTypeId = @json($finished->brand_type_id);
 
         const url = `{{ url('/api/brand/type/get') }}`
         $.ajax({
@@ -108,7 +108,7 @@
             type: "post",
             data: {
                 brand_id: brandId,
-                box_type: 'PLASTIC'
+                box_type: 'MASTER'
             },
             success: function(res) {
                 let opt = `<option selected disabled>Pilih Jenis</option>`
@@ -141,7 +141,7 @@
             type: "post",
             data: {
                 brand_id: id,
-                box_type: 'PLASTIC'
+                box_type: 'MASTER'
             },
             success: function(res) {
                 let opt = `<option selected disabled>Pilih Jenis</option>`

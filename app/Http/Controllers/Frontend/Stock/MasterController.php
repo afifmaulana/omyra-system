@@ -76,10 +76,12 @@ class MasterController extends Controller
         $stock = Stock::where('id', $id)->first();
         $brand = Brand::all();
         $sizes = Size::all();
+        $brandTypes = BrandType::all();
         return view('pages.frontend.stock.master.edit', [
             'stock' => $stock,
             'brand' => $brand,
             'sizes' => $sizes,
+            'brandTypes' => $brandTypes,
         ]);
     }
 
@@ -92,7 +94,7 @@ class MasterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $params = $this->validate($request, [
+        $this->validate($request, [
             'date' => 'required',
             'brand_id' => 'required',
             'brand_type_id' => 'required',
@@ -100,21 +102,50 @@ class MasterController extends Controller
             'stock_total' => 'required',
         ]);
 
-        $stock = Stock::where('id', $id)->first();
-        $params['date'] = Carbon::parse($params['date'])->format('Y-m-d');
-        $params['user_id'] = auth()->id();
-        $params['stock_type'] = 'MASTER';
-        $params['stock_left'] = $params['stock_total'];
-        $params = $request->all();
+        // $stock = Stock::where('id', $id)->first();
+        // $params['date'] = Carbon::parse($params['date'])->format('Y-m-d H:i:s');
+        // $params['user_id'] = auth()->id();
+        // $params['stock_type'] = 'MASTER';
+        // $params['stock_left'] = $params['stock_total'];
+        // $params = $request->all();
 
-        $stock->update([
-            'date' => $params['date'] ?? $stock->date,
-            'brand_id' => $params['brand_id'] ?? $stock->brand_id,
-            'brand_type_id' => $params['brand_type_id'] ?? $stock->brand_type_id,
-            'brand_size_id' => $params['brand_size_id'] ?? $stock->brand_size_id,
-            'stock_total' => $params['stock_total'] ?? $stock->stock_total,
-        ]);
-        return redirect()->route('frontend.master.index')->with('success', 'Berhasil mengubah Jenis Brand!');
+        // $stock->update([
+        //     'date' => $params['date'] ?? $stock->date,
+        //     'brand_id' => $params['brand_id'] ?? $stock->brand_id,
+        //     'brand_type_id' => $params['brand_type_id'] ?? $stock->brand_type_id,
+        //     'brand_size_id' => $params['brand_size_id'] ?? $stock->brand_size_id,
+        //     'stock_total' => $params['stock_total'] ?? $stock->stock_total,
+        // ]);
+        // return redirect()->route('frontend.master.index')->with('success', 'Berhasil mengubah Jenis Brand!');
+
+
+        $stock = Stock::where('id', $id)->first();
+        DB::beginTransaction();
+        try {
+            $title = $description = 'Stock Master dengan ID #' . $stock->id . ' telah diubah oleh Mas ' . Auth::user()->name;
+            $log = new LogActivity();
+            $log->user_id = Auth::user()->id;
+            $log->source_type = 'App\Stock';
+            $log->source_id = $stock->id;
+            $log->title = $title;
+            $log->description = $description;
+            $log->save();
+
+            $stock->date = Carbon::parse($request->date)->format('Y-m-d');
+            $stock->brand_id = $request->brand_id;
+            $stock->brand_type_id = $request->brand_type_id;
+            $stock->brand_size_id = $request->brand_size_id;
+            $stock->stock_total = $request->stock_total;
+
+            $stock->update();
+
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            dd($th->getMessage());
+        }
+
+        return redirect()->route('frontend.master.index')->with('success', 'Berhasil mengubah data');
     }
 
     public function destroy($id)

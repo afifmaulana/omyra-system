@@ -71,6 +71,8 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::post('/briquette/semi-finished', [SemiFinishedController::class, 'datatables'])->name('semi-finished.datatables');
     Route::get('/briquette/semi-finished/create', [SemiFinishedController::class, 'create'])->name('semi-finished.create');
     Route::post('/briquette/semi-finished/create', [SemiFinishedController::class, 'store'])->name('semi-finished.store');
+    Route::get('/briquette/semi-finished/edit/{id}', [SemiFinishedController::class, 'edit'])->name('semi-finished.edit');
+    Route::put('/briquette/semi-finished/edit/{id}', [SemiFinishedController::class, 'update'])->name('semi-finished.update');
     Route::get('/briquette/semi-finished/delete/{id}', [SemiFinishedController::class, 'destroy'])->name('semi-finished.delete');
 
     //Finished Briquette
@@ -78,6 +80,8 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::post('/briquette/finished', [FinishedController::class, 'datatables'])->name('finished.datatables');
     Route::get('/briquette/finished/create', [FinishedController::class, 'create'])->name('finished.create');
     Route::post('/briquette/finished/create', [FinishedController::class, 'store'])->name('finished.store');
+    Route::get('/briquette/finished/{id}', [FinishedController::class, 'edit'])->name('finished.edit');
+    Route::put('/briquette/finished/{id}', [FinishedController::class, 'update'])->name('finished.update');
     Route::get('/briquette/finished/delete/{id}', [FinishedController::class, 'destroy'])->name('finished.delete');
 
     //Profile User
