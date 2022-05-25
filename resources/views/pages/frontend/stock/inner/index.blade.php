@@ -13,6 +13,7 @@
         </div>
     </div>
     <div class="bg-grey pt-23 mt-1" style="max-height: 86vh; overflow: scroll;">
+        @include('components.frontend.flashmessage')
         <div class="container-omyra" style="margin-bottom: 90px;">
             <div class="float-right">
                 <a href="{{ route('frontend.inner.create') }}" class="btn btn-sm btn-primary"

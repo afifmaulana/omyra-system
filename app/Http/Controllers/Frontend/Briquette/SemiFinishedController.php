@@ -163,7 +163,7 @@ class SemiFinishedController extends Controller
             dd($th->getMessage());
         }
 
-        return redirect()->route('frontend.semi-finished.index')->with('success', 'Berhasil mengubah data');
+        return redirect()->route('frontend.semi-finished.index')->with('success', 'Berhasil mengubah data Barang 1/2 Jadi');
     }
 
     public function destroy($id)

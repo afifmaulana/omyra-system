@@ -159,7 +159,7 @@ class FinishedController extends Controller
             dd($th->getMessage());
         }
 
-        return redirect()->route('frontend.finished.index')->with('success', 'Berhasil mengubah data');
+        return redirect()->route('frontend.finished.index')->with('success', 'Berhasil mengubah data Barang Jadi');
     }
 
     public function destroy($id)

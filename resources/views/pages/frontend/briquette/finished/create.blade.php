@@ -95,7 +95,7 @@
 <script>
     $('.datepicker').datepicker({
         autoclose: true,
-        format: 'dd/mm/yyyy'
+        format: 'dd-mm-yyyy'
     });
 
     $(document).on('change', '#input-brand-id', function(e) {
