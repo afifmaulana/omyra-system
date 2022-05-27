@@ -149,6 +149,8 @@ class InnerController extends Controller
         $draw = $request->input('draw');
         $stocks = Stock::where('stock_type', 'INNER')->get();
 
+        $stocks = $this->filterDatatables($request, $stocks);
+
         $total = $stocks->count();
         $stocks->take($limit)->skip($offset);
         $output = [];
@@ -170,5 +172,45 @@ class InnerController extends Controller
         $output['draw'] = $draw;
         $output['recordsTotal'] = $output['recordsFiltered'] = $total;
         return json_encode($output);
+    }
+
+    private function filterDatatables($request, $stocks)
+    {
+        if ($request->filter_date) {
+            $date = explode(' to ', $request->filter_date);
+            if (count($date) < 2) {
+                $stocks->where(DB::raw('str_to_date(date, "%d-%m-%Y")'), $date);
+            }else{
+                $start_date = $date[0];
+                $end_date = $date[1];
+                $stocks->where(DB::raw('str_to_date(date, "%d-%m-%Y")'), '>=', $start_date)
+                ->where(DB::raw('str_to_date(date, "%d-%m-%Y")'), '<=', $end_date);
+            }
+        }
+        if ($request->input('stock') != null) {
+            $columnIndex = $request->input('stock')[0]['column']; // Column index
+            $columnName = $request->input('columns')[$columnIndex]['data']; // Column name
+            $stocks->orderBy($columnName, $request->input('stock')[0]['dir']);
+        }
+
+        if ($request->id) {
+            $stocks->where('stocks.id', 'like', '%' . $request->id . '%');
+        }
+        if ($request->date) {
+            $stocks->where('date', 'like', '%' . $request->date . '%');
+        }
+        if ($request->brand_id) {
+            $stocks->where('brand_id', 'like', '%' . $request->brand_id . '%');
+        }
+        if ($request->brand_type_id) {
+            $stocks->where('brand_type_id', 'like', '%' . $request->brand_type_id . '%');
+        }
+        if ($request->brand_size_id) {
+            $stocks->where('brand_size_id', 'like', '%' . $request->brand_size_id . '%');
+        }
+        if ($request->stock_total) {
+            $stocks->where('stock_total', 'like', '%' . $request->stock_total . '%');
+        }
+        return $stocks;
     }
 }

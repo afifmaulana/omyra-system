@@ -86,7 +86,7 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
 
     //Profile User
     Route::get('/profile', [FrontendProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [FrontendProfileController::class, 'update'])->name('profile.update');
+    Route::put('/profile', [FrontendProfileController::class, 'update'])->name('profile.update');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin'], 'as' => 'admin.'], function () {

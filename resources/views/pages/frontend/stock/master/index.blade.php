@@ -24,7 +24,7 @@
             <table id="dataTable" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th>ID</th>
                         <th>Tanggal</th>
                         <th>Brand</th>
                         <th>Jenis</th>
@@ -38,7 +38,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>No</th>
+                        <th>ID</th>
                         <th>Tanggal</th>
                         <th>Brand</th>
                         <th>Jenis</th>

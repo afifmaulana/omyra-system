@@ -82,7 +82,7 @@ class LoginController extends Controller
                 } else if ($user->role == 1) {
                     return redirect()->intended(route('frontend.dashboard.index'));
                 } else {
-                    return redirect()->intended(route('frontend.stock.index'));
+                    return redirect()->intended(route('frontend.inner.index'));
                 }
             } else {
                 $errors = new MessageBag(['email' => 'Akun Anda telah dihapus']);
