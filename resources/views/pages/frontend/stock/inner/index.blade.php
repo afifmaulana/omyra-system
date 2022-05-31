@@ -18,7 +18,7 @@
     <div class="bg-grey pt-23 mt-1" style="max-height: 86vh; overflow: scroll;">
         @include('components.frontend.flashmessage')
         <div class="container-omyra" style="margin-bottom: 90px;">
-            {{-- <div class="row">
+            <div class="row">
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <label class="mt-2">Filter Date :</label>
                 </div>
@@ -34,7 +34,7 @@
                     <button type="reset" class="btn btn-sm btn-reset btn-outline-secondary btn-block"
                         title="">Reset</button>
                 </div>
-            </div> --}}
+            </div>
             <div class="float-right">
                 <a href="{{ route('frontend.inner.create') }}" class="btn btn-sm btn-primary" style="border-radius: 30px">
                     <i class="fa fa-plus"></i> Tambah</a>

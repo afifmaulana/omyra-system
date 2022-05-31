@@ -102,23 +102,6 @@ class MasterController extends Controller
             'stock_total' => 'required',
         ]);
 
-        // $stock = Stock::where('id', $id)->first();
-        // $params['date'] = Carbon::parse($params['date'])->format('Y-m-d H:i:s');
-        // $params['user_id'] = auth()->id();
-        // $params['stock_type'] = 'MASTER';
-        // $params['stock_left'] = $params['stock_total'];
-        // $params = $request->all();
-
-        // $stock->update([
-        //     'date' => $params['date'] ?? $stock->date,
-        //     'brand_id' => $params['brand_id'] ?? $stock->brand_id,
-        //     'brand_type_id' => $params['brand_type_id'] ?? $stock->brand_type_id,
-        //     'brand_size_id' => $params['brand_size_id'] ?? $stock->brand_size_id,
-        //     'stock_total' => $params['stock_total'] ?? $stock->stock_total,
-        // ]);
-        // return redirect()->route('frontend.master.index')->with('success', 'Berhasil mengubah Jenis Brand!');
-
-
         $stock = Stock::where('id', $id)->first();
         DB::beginTransaction();
         try {

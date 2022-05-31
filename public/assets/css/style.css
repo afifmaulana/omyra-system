@@ -11,6 +11,24 @@ input[type=text]{
 }
 
 /* Start Background Color*/
+.bg-mist-pink{
+    background: #B8A6B5;
+}
+.bg-asparagus-white{
+    background: #7E9394;
+}
+.bg-washout-green{
+    background: #A4B7A6;
+}
+.bg-heather-mauve{
+    background: #8A7C93;
+}
+.bg-girly-light-blue{
+    background: #DAEAF9;
+}
+.bg-sarah{
+    background: #FDC8DC;
+}
 .bg-green{
     background: #58D874;
 }

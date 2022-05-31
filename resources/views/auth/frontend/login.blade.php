@@ -23,7 +23,7 @@
                 <div class="shadow shadow-lg">
 
                     <div class="row justify-content-center w-100" style="position: absolute; top: 15px;">
-                        <div class="mr-2">
+                        <div class="mr-2 pt-5">
                             <img src="{{ asset('images/logo.png') }}" alt="m-omyra" width="150" height="50">
                         </div>
                         {{-- <div class="text-active-pink font-weight-500 font-size-19"><b>Omyra</b></div> --}}
@@ -32,7 +32,7 @@
             </div>
 
             <div class="mb-4 pt-5 text-center">
-                <div class="font-size-24 font-weight-700">Masuk</div>
+                <div class="font-size-24 pt-5 font-weight-700">Masuk</div>
             </div>
 
             <div class="d-none d-md-block">

@@ -62,7 +62,7 @@ class SemiFinishedController extends Controller
             $log->save();
 
             DB::commit();
-            return redirect()->route('frontend.semi-finished.index')->with('success', 'Berhasil menambahkan data Plastik');
+            return redirect()->route('frontend.semi-finished.index')->with('success', 'Berhasil menambahkan data Barang 1/2 Jadi');
         } catch (\Exception $e) {
             DB::rollBack();
             dd($e->getMessage());

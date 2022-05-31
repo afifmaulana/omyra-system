@@ -61,7 +61,7 @@ class FinishedController extends Controller
             $log->save();
 
             DB::commit();
-            return redirect()->route('frontend.finished.index')->with('success', 'Berhasil menambahkan data Plastik');
+            return redirect()->route('frontend.finished.index')->with('success', 'Berhasil menambahkan data Barang Jadi');
         } catch (\Exception $e) {
             DB::rollBack();
             dd($e->getMessage());

@@ -128,7 +128,7 @@ class InnerController extends Controller
             dd($th->getMessage());
         }
 
-        return redirect()->route('frontend.inner.index')->with('success', 'Berhasil mengubah data');
+        return redirect()->route('frontend.inner.index')->with('success', 'Berhasil mengubah data Inner Box');
     }
 
     public function destroy($id)
