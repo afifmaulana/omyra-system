@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="bg-grey pt-23 mt-1" style="max-height: 86vh; overflow: scroll; margin-bottom: 30px">
-        <div class="container-omyra">
+        <div class="container-omyra" style="margin-bottom: 90px;">
             <form action="{{ route('frontend.inner.store') }}" method="POST">
                 @csrf
                 <div class="form-group">

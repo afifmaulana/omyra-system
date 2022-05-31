@@ -21,7 +21,7 @@
     </div>
 </div>
 <div class="bg-grey pt-23 mt-1" style="max-height: 86vh; overflow: scroll; margin-bottom: 30px">
-    <div class="container-omyra">
+    <div class="container-omyra" style="margin-bottom: 90px;">
         <form action="{{ route('frontend.semi-finished.update', $semiFinished->id) }}" method="POST">
             @csrf
             @method('put')
