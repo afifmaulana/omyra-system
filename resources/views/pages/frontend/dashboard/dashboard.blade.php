@@ -66,7 +66,7 @@
     <div class="container-omyra pb-5 mb-5">
         <div class="row mb-2 px-2">
             <div class="col-6">
-                <div class="rounded bg-heather-mauve mb-1px">
+                <div class="rounded bg-green mb-1px">
                     <div class="card-body">
                         <div class="d-flex justify-content-center">
                             <i class="fas fa-archive fa-2x text-white"></i>
@@ -101,7 +101,7 @@
                 <p class="text-center font-xs lh-15">Barang Jadi</p>
             </div>
             <div class="col-6">
-                <div class="rounded bg-asparagus-white mb-1px">
+                <div class="rounded bg-yellow mb-1px">
                     <div class="card-body">
                         <div class="d-flex justify-content-center">
                             <i class="fas fa-archive fa-2x text-white"></i>
